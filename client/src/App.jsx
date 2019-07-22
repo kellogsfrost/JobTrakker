@@ -111,7 +111,7 @@ class App extends React.Component{
           <Link to="/login">LogIn</Link>{' '}
         </nav>
         <Route exact path='/' component={Home} />
-       
+       {contents}
         <Route exact path='/profile' 
                 render={() => <Profile jobs={this.state.jobs} />} />
         <Route exact path='/jobs'  component={Job} />
