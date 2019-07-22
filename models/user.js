@@ -20,7 +20,13 @@ const userSchema = new mongoose.Schema({
         minlength: [5, 'Email must be between 5 and 99 characters'],
         maxlength: [99, 'Password must be between 5 and 99 characters']
     },
-    job: [{type: mongoose.Schema.Types.ObjectId, ref:'Job'}]
+    jobs: [{
+        type: mongoose.Schema.Types.ObjectId, ref:'Job'
+    }],
+    address: {
+        type: String
+    }
+
 });
 
 
@@ -29,7 +35,9 @@ userSchema.set('toObject', {
         let returnJson ={
             _id: ret._id,
             email: ret.email,
-            name: ret.name
+            name: ret.name,
+            jobs: ret.jobs,
+            address: ret.address
         }
         return returnJson;
     }
