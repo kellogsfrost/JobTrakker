@@ -1,5 +1,5 @@
 import React from 'react';
-import NewJob from './NewJob'
+
 
 class Profile extends React.Component {
    render() {
@@ -7,6 +7,11 @@ class Profile extends React.Component {
 
          <>
             <h1>User Profile/Info:</h1>
+
+
+
+         <div>
+
          <div>
             <button>My Calendar</button>
             <button>My Docs</button>

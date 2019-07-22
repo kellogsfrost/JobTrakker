@@ -6,6 +6,7 @@ class Job extends React.Component {
       return (
          <>
             <h1>Current Jobs:</h1>
+            <NewJob />
             <div><button>My Calendar</button></div>
             <div><button>My Docs</button></div>
             <div><button>Update Your Info</button></div>
