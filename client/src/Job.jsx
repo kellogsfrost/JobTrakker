@@ -1,7 +1,7 @@
 import React from 'react';
 import NewJob from './NewJob'
 
-class Profile extends React.Component {
+class Job extends React.Component {
    render() {
       return (
          <>
