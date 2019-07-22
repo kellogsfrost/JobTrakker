@@ -1,15 +1,13 @@
 import React from 'react';
-import NewJob from './NewJob'
 
 class Profile extends React.Component {
    render() {
       return (
          <>
-            <h1>User Profile/Info:</h1>
-
+            <h1>Add A New Job:</h1>
          </>
       )
    }
 }
 
-export default Profile
+export default NewJob;
