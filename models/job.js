@@ -16,5 +16,11 @@ const jobSchema = new mongoose.Schema({
     },
     phone: {
         type: String
-    }
-})
+    },
+    user: [{type: mongoose.Schema.Types.ObjectId, ref:'user'}]
+});
+
+
+const Job = mongoose.model('Job', jobSchema);
+
+module.exports = Job;
