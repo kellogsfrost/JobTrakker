@@ -103,18 +103,22 @@ class App extends React.Component{
     return(
       <>
       <Router>
-      
         <nav>
           <Link to="/">Home</Link>{' '}
           <Link to="/profile">Profile</Link>{' '}
           <Link to="/jobs">Jobs</Link>{' '}
+          <Link to="/signup">Sign Up</Link>{' '}
+          <Link to="/login">LogIn</Link>{' '}
         </nav>
         <Route exact path='/' component={Home} />
+       
         <Route exact path='/profile' 
                 render={() => <Profile jobs={this.state.jobs} />} />
         <Route exact path='/jobs'  component={Job} />
         <Route path='/jobs/:name' 
                 render={(props) => <Job {...props} />} />
+        <Route exact path='/signup'  component={Signup} />
+        <Route exact path='/login'  component={Login} />
       </Router>
     </>
     );
