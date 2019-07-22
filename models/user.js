@@ -19,8 +19,10 @@ const userSchema = new mongoose.Schema({
         required:[true, 'You must enter an Email'],
         minlength: [5, 'Email must be between 5 and 99 characters'],
         maxlength: [99, 'Password must be between 5 and 99 characters']
-    }
+    },
+    job: [{type: mongoose.Schema.Types.ObjectId, ref:'Job'}]
 });
+
 
 userSchema.set('toObject', {
     transform: function(doc, ret, options) {
