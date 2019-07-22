@@ -4,8 +4,14 @@ import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
 import Job from './Job';
-import NewJob from './NewJob';
-import Edit from './Edit';
+// import NewJob from './NewJob';
+// import Edit from './Edit';
+import Home from './Home';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 class App extends React.Component{
   constructor(props) {
@@ -91,15 +97,26 @@ class App extends React.Component{
         <p>Please signup or login</p>
         <Login liftToken={this.liftToken} />
         <Signup liftToken={this.liftToken} />
-        <Profile />
-        <Job />
-        <NewJob />
-        <Edit />
         </>
       );
     }
     return(
-      contents
+      <>
+      <Router>
+      
+        <nav>
+          <Link to="/">Home</Link>{' '}
+          <Link to="/profile">Profile</Link>{' '}
+          <Link to="/jobs">Jobs</Link>{' '}
+        </nav>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/profile' 
+                render={() => <Profile jobs={this.state.jobs} />} />
+        <Route exact path='/jobs'  component={Job} />
+        <Route path='/jobs/:name' 
+                render={(props) => <Job {...props} />} />
+      </Router>
+    </>
     );
   }
 }
