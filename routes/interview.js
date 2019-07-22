@@ -30,3 +30,21 @@ router.get('/interviews/:id', (req, res) => {
     }
 })
 
+app.put("/interview/:id", (req, res) => {
+    Interview.findByIdAndUpdate(req.params.id, {
+        date: req.body.date,
+        time: req.body.time,
+        interviewer: req.body.interviewer,
+        notes: req.body.notes
+    });
+    newPizza.save((err, interview) => {
+        res.json(interview)
+    })
+})
+
+app.delete("/interview/delete", (req, res) => {
+    Interview.findByIdAndDelete(req.params.id, function(err){
+        if (err) res.json(err);
+        res.json({message: "DELETED*!"})
+    })
+})
