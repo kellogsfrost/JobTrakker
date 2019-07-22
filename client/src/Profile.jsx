@@ -7,9 +7,11 @@ class Profile extends React.Component {
          <>
          <div>
             <h1>User Profile/Info:</h1>
+
          </div>
 
          <div>
+         
             <button>My Calendar</button>
             <button>My Docs</button>
             <button>Update Your Info</button>
@@ -19,4 +21,4 @@ class Profile extends React.Component {
    }
 }
 
-export default Profile
+export default Profile;
