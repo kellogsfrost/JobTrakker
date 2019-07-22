@@ -6,11 +6,12 @@ class Profile extends React.Component {
       return (
 
          <>
+         <div>
             <h1>User Profile/Info:</h1>
 
 
 
-         <div>
+         </div>
 
          <div>
          
