@@ -13,8 +13,7 @@ const interviewSchema = new mongoose.Schema({
    },
    notes: {
       type: String,
-   },
-   job: [{type: mongoose.Schema.Types.ObjectId, ref:'Job'}]
+   }
 });
 
 const Interview = mongoose.model('Interview', interviewSchema);

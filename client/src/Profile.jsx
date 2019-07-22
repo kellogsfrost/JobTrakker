@@ -10,11 +10,10 @@ class Profile extends React.Component {
 
 
          <div>
-           
+         
             <button>My Calendar</button>
             <button>My Docs</button>
             <button>Update Your Info</button>
-            
          </div>
          </>
       )
