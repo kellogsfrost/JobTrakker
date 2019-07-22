@@ -17,7 +17,7 @@ const jobSchema = new mongoose.Schema({
     phone: {
         type: String
     },
-    user: [{type: mongoose.Schema.Types.ObjectId, ref:'user'}]
+    interview: [{type: mongoose.Schema.Types.ObjectId, ref:'interview'}]
 });
 
 
