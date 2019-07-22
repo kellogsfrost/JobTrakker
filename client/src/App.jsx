@@ -2,6 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import Login from './Login';
 import Signup from './Signup';
+import Profile from './Profile';
+import Job from './Job';
+import NewJob from './NewJob';
+import Edit from './Edit';
 
 class App extends React.Component{
   constructor(props) {
@@ -87,6 +91,10 @@ class App extends React.Component{
         <p>Please signup or login</p>
         <Login liftToken={this.liftToken} />
         <Signup liftToken={this.liftToken} />
+        <Profile />
+        <Job />
+        <NewJob />
+        <Edit />
         </>
       );
     }
