@@ -4,13 +4,10 @@ import React from 'react';
 class Profile extends React.Component {
    render() {
       return (
-
          <>
-            <h1>User Profile/Info:</h1>
-
-
-
          <div>
+            <h1>User Profile/Info:</h1>
+         </div>
 
          <div>
             <button>My Calendar</button>
