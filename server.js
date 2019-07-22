@@ -37,10 +37,9 @@ app.use('/auth/login', loginLimiter);
 app.use('/auth/signup', signupLimiter);
 
 app.use('/auth', require('./routes/auth'));
-app.use('/profile', require('./routes/profile'));
-// app.use('/jobs', require('./routes/job'));
-// app.use('/edit', require('./routes/edit'));
-// app.use('/newJob', require('./routes/newJob'));
+app.use('/api/profile', require('./routes/profile'));
+app.use('/api/jobs', require('./routes/jobs'));
+// app.use('/api/interviews', require('./routes/interview'));
 app.use('/api', expressJWT({secret: process.env.JWT_SECRET}), require('./routes/api'));
 
 
