@@ -74,7 +74,7 @@ class Job extends React.Component {
       return (
          <>
             <h1>Current Jobs:</h1>
-            <JobList />
+            <JobList jobs={this.props.jobs}/>
             <h2>Update Your Job Info</h2>
             <form onSubmit={this.handleSubmit}>
                Position:<br />

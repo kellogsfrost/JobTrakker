@@ -72,7 +72,7 @@ router.post('/me/from/token', (req, res) => {
                 res.json({ type: 'error', message: 'Invalid token. Please login again.' });
             } else {
                 // if token is valid, look up user in the db
-                User.findById(user._id, (err, user) => {
+                User.findById(user._id).populate('jobs').exec((err, user) => {
                     if (err) {
                         // if user doesn't exist, return an error
                         res.json({ type: 'error', message: 'Database error furing validation' })
