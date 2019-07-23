@@ -1,3 +1,4 @@
+
 import React from 'react';
 import NewJob from './NewJob'
 
@@ -15,4 +16,4 @@ class Job extends React.Component {
    }
 }
 
-export default Job
+export default Job;
