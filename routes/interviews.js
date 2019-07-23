@@ -49,4 +49,4 @@ router.delete("api/interviews/delete", (req, res) => {
     })
 })
 
-module.export = router;
+module.exports = router;
