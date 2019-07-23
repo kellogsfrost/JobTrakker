@@ -87,6 +87,11 @@ class App extends React.Component{
     if (user) {
       contents = (
         <>
+        <nav>
+        <Link to="/">Home</Link>{' '}
+          <Link to="/profile">Profile</Link>{' '}
+          <Link to="/jobs">Jobs</Link>{' '}
+          </nav>
         <p>Hello, {user.name}</p>
         <p onClick={this.logout}>Logout</p>
         </>
@@ -94,24 +99,23 @@ class App extends React.Component{
     } else {
       contents = (
         <>
+        <nav>
+        <Link to="/signup">Sign Up</Link>{' '}
+          <Link to="/login">LogIn</Link>{' '}
+          <Link to="/">Home</Link>{' '}
+        </nav>
         <p>Please signup or login</p>
-        <Login liftToken={this.liftToken} />
-        <Signup liftToken={this.liftToken} />
+        {/* <Login liftToken={this.liftToken} /> */}
+        {/* <Signup liftToken={this.liftToken} /> */}
         </>
       );
     }
     return(
       <>
       <Router>
-        <nav>
-          <Link to="/">Home</Link>{' '}
-          <Link to="/profile">Profile</Link>{' '}
-          <Link to="/jobs">Jobs</Link>{' '}
-          <Link to="/signup">Sign Up</Link>{' '}
-          <Link to="/login">LogIn</Link>{' '}
-        </nav>
+        
         <Route exact path='/' component={Home} />
-       {contents}
+        {contents}
         <Route exact path='/profile' 
                 render={() => <Profile jobs={this.state.jobs} user={this.state.user} />} />
         <Route exact path='/jobs'  component={Job} />
