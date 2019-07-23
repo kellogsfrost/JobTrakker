@@ -113,7 +113,7 @@ class App extends React.Component{
         <Route exact path='/' component={Home} />
        {contents}
         <Route exact path='/profile' 
-                render={() => <Profile jobs={this.state.jobs} />} />
+                render={() => <Profile jobs={this.state.jobs} user={this.state.user} />} />
         <Route exact path='/jobs'  component={Job} />
         <Route path='/jobs/:name' 
                 render={(props) => <Job {...props} />} />
