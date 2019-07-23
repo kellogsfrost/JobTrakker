@@ -1,5 +1,3 @@
-
-
 import React from  'react';
 import ReactMapboxGl from 'react-mapbox-gl';
 
@@ -24,7 +22,9 @@ function Map() {
             width: '100vw'
           }}
         >
-        </Map>;
+
+      </Map>;
+
     </div>
   );
 }
