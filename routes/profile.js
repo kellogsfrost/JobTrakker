@@ -23,10 +23,11 @@ router.put("/:id", (req, res) => {
       address: req.body.address
    }, (err, user) => {
       res.json(user)
+
    });
    // User.save((err, user) => {
+   })
 });
-
 
 //POST - create a job--working
 // TODO: add express-jwt middleware to require the token
