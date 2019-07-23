@@ -4,6 +4,13 @@ const router = express.Router();
 router.get('/', (req, res) => {
    res.json({type: 'success', message: 'You accessed the protected api routes'});
 });
+
+
+
+
+
+
+
 //POST - create a job--working
 // TODO: add express-jwt middleware to require the token
 router.post('/', (req, res) => {
@@ -23,4 +30,5 @@ router.post('/', (req, res) => {
       res.json(job)
    })
 })
+
 module.exports = router;
