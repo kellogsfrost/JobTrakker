@@ -4,7 +4,12 @@ import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
 import Job from './Job';
+<<<<<<< HEAD
 import Map from './Map';
+=======
+import Map from './Map'
+
+>>>>>>> 931f7465fa2b18c21b82642187ddc0b292b78169
 // import NewJob from './NewJob';
 // import Edit from './Edit';
 import Home from './Home';
@@ -119,13 +124,21 @@ class App extends React.Component{
         <Route exact path='/' component={Home} />
         {contents}
         <Route exact path='/profile' 
+
                 render={() => <Profile jobs={this.state.user.jobs} user={this.state.user} />} />
         <Route exact path='/jobs'  render={() => <Job jobs={this.state.user.jobs} /> }/>
+
         <Route path='/jobs/:name' 
                 render={(props) => <Job jobs={this.state.user.jobs} {...props} />} />
+<<<<<<< HEAD
         {/* <Route exact path='/signup'  component={Signup} /> */}
         {/* <Route exact path='/login'  component={Login} /> */}
         {/* <Route excat path='/map' component={Map} /> */}
+=======
+        <Route exact path='/signup'  component={Signup} />
+        <Route exact path='/login'  component={Login} />
+        { <Route excat path='/map' component={Map} /> }
+>>>>>>> 931f7465fa2b18c21b82642187ddc0b292b78169
       </Router>
     </>
     );
