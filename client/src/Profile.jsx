@@ -18,15 +18,15 @@ class Profile extends React.Component {
 
    handleSubmit(e) {
       e.preventDefault()
-      axios.put("/api/profile/:id", {
-         name: this.state.name,
-         email: this.state.email,
-         address: this.state.address
+      axios.put(`/api/profile/${this.props.user._id}`, {
+         name: this.state.newName,
+         email: this.state.newEmail,
+         address: this.state.newAddress
       }).then((response) => {
-         axios.get("/api/profile/:id").then((response) =>{
-            this.setState ({
-               user: response.data
-            })
+         axios.get(`/api/profile/${this.props.user._id}`)
+         .then((response) =>{
+            console.log("Where are you eagle eye?!")
+            this.props.liftToken({token: this.props.token, user: response.data})
          })
       })
    }
