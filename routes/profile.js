@@ -17,6 +17,7 @@ router.get("/:id", (req, res) => {
 
 //PUT update user info 
 router.put("/:id", (req, res) => {
+   console.log("I am the put route in the back end");
    User.findByIdAndUpdate(req.params.id, {
       name: req.body.name,
       email: req.body.email,
@@ -25,7 +26,6 @@ router.put("/:id", (req, res) => {
       res.json(user)
    })
 });
-
 
 
 //POST - create a job--working
