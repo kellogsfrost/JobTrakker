@@ -24,6 +24,7 @@ router.put("/:id", (req, res) => {
    });
    User.save((err, user) => {
       res.json(user)
+   })
 });
 
 
