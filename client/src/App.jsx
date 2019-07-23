@@ -88,7 +88,7 @@ class App extends React.Component{
       contents = (
         <>
         <nav>
-        <Link to="/">Home</Link>{' '}
+          <Link to="/">Home</Link>{' '}
           <Link to="/profile">Profile</Link>{' '}
           <Link to="/jobs">Jobs</Link>{' '}
           </nav>
@@ -105,8 +105,8 @@ class App extends React.Component{
           <Link to="/">Home</Link>{' '}
         </nav>
         <p>Please signup or login</p>
-        {/* <Login liftToken={this.liftToken} /> */}
-        {/* <Signup liftToken={this.liftToken} /> */}
+        <Login liftToken={this.liftToken} />
+        <Signup liftToken={this.liftToken} />
         </>
       );
     }

@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
       company: req.body.company,
       position: req.body.position,
       phone: req.body.phone,
-      email: req.body.email
+      email: req.body.email,
    }, function (err, job) {
       res.json(job)
    })
