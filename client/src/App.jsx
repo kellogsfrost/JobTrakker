@@ -102,7 +102,7 @@ class App extends React.Component{
       contents = (
         <>
         <nav>
-        <Link to="/signup">Sign Up</Link>{' '}
+          <Link to="/signup">Sign Up</Link>{' '}
           <Link to="/login">LogIn</Link>{' '}
           <Link to="/">Home</Link>{' '}
         </nav>
