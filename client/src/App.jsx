@@ -4,7 +4,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
 import Job from './Job';
-import Map from './Map'
+import Map from './map'
 // import NewJob from './NewJob';
 // import Edit from './Edit';
 import Home from './Home';
@@ -119,7 +119,7 @@ class App extends React.Component{
         <Route exact path='/' component={Home} />
         {contents}
         <Route exact path='/profile' 
-                render={() => <Profile jobs={this.state.jobs} user={this.state.user} />} />
+                render={() => <Profile jobs={this.state.jobs} user={this.state.user} liftToken={this.liftToken} token={this.state.token} />}  />
         <Route exact path='/jobs'  component={Job} />
         <Route path='/jobs/:name' 
                 render={(props) => <Job {...props} />} />
