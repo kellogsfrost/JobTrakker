@@ -37,7 +37,7 @@ router.put("/api/interviews/:id", (req, res) => {
         interviewer: req.body.interviewer,
         notes: req.body.notes
     });
-    newPizza.save((err, interview) => {
+    Interview.save((err, interview) => {
         res.json(interview)
     })
 })
