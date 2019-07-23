@@ -4,7 +4,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
 import Job from './Job';
-// import Map from './Map'
+import Map from './Map';
 // import NewJob from './NewJob';
 // import Edit from './Edit';
 import Home from './Home';
