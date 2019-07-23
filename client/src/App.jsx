@@ -102,7 +102,7 @@ class App extends React.Component{
       contents = (
         <>
         <nav>
-        <Link to="/signup">Sign Up</Link>{' '}
+          <Link to="/signup">Sign Up</Link>{' '}
           <Link to="/login">LogIn</Link>{' '}
           <Link to="/">Home</Link>{' '}
         </nav>
@@ -123,8 +123,8 @@ class App extends React.Component{
         <Route exact path='/jobs'  render={() => <Job jobs={this.state.user.jobs} /> }/>
         <Route path='/jobs/:name' 
                 render={(props) => <Job jobs={this.state.user.jobs} {...props} />} />
-        <Route exact path='/signup'  component={Signup} />
-        <Route exact path='/login'  component={Login} />
+        {/* <Route exact path='/signup'  component={Signup} /> */}
+        {/* <Route exact path='/login'  component={Login} /> */}
         {/* <Route excat path='/map' component={Map} /> */}
       </Router>
     </>
