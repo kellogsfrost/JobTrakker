@@ -4,7 +4,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
 import Job from './Job';
-import Map from './map'
+import Map from './Map'
 
 // import NewJob from './NewJob';
 // import Edit from './Edit';
@@ -128,7 +128,7 @@ class App extends React.Component{
                 render={(props) => <Job jobs={this.state.user.jobs} {...props} />} />
         <Route exact path='/signup'  component={Signup} />
         <Route exact path='/login'  component={Login} />
-        {/* <Route excat path='/map' component={Map} /> */}
+        { <Route excat path='/map' component={Map} /> }
       </Router>
     </>
     );
