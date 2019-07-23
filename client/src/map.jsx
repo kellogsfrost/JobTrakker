@@ -14,15 +14,27 @@ class Map extends Component {
   };
 
   render() {
-    return (
-      <ReactMapGL
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-        {...this.state.viewport}
-        onViewportChange={(viewport) => this.setState({viewport})}
-      />
-    );
-  }
-}
+    
+      const Map = new ReactMapboxGl({
+        accessToken:
+          'pk.eyJ1IjoiZ2FycmV0dG1vb3JlIiwiYSI6ImNqdHQ0dWMyZzE3bDMzemxsNDJkM3hrdnoifQ.1v2jNBqVj1p6jhAKJkHY0A',
+        // center: [this.state.lon, this.state.lat]
+      });
+      return (
+        <>
+          <h3>Find a Starbunker near you!</h3>
+        <Map
+            height='200px'
+            style={`mapbox://styles/garrettmoore/cjtuh2gkn00ja1gt3xa94pqmo`}
+            zoom={[0.5]}
+            // center={[this.state.lon, this.state.lat]}
+            containerStyle={{ height: '40em' }}>
+        </Map>
 
+        </>
+      );
+    }
+  }
+  
 
 export default Map;
