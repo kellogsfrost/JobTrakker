@@ -9,10 +9,10 @@ router.get('/', (req, res) => {
 
 //GET get/show user
 router.get("/:id", (req, res) => {
-   User.findById(req.params.id), function(err, user) {
+   User.findById(req.params.id, function(err, user) {
       if(err) res.json (err)
       res.json(user)
-   }
+   })
 })
 
 //PUT update user info 
@@ -21,12 +21,15 @@ router.put("/:id", (req, res) => {
       name: req.body.name,
       email: req.body.email,
       address: req.body.address
-   });
-   User.save((err, user) => {
+   }, (err, user) => {
       res.json(user)
    })
 });
 
+   });
+   // User.save((err, user) => {
+   })
+});
 
 //POST - create a job--working
 // TODO: add express-jwt middleware to require the token
