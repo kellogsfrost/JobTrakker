@@ -22,7 +22,9 @@ function Map() {
             width: '100vw'
           }}
         >
+
       </Map>;
+
     </div>
   );
 }
