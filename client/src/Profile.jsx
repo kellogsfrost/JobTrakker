@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 
 class Profile extends React.Component {
@@ -15,6 +16,22 @@ class Profile extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
    }
 
+   handleSubmit(e) {
+      e.preventDefault()
+      axios.put("/api/profile/:id", {
+         name: this.state.name,
+         email: this.state.email,
+         address: this.state.address
+      }).then((response) => {
+         axios.get("/api/profile/:id").then((response) =>{
+            this.setState ({
+               user: response.data
+            })
+         })
+      })
+   }
+
+      // hit the backend route for profile put
 
    updateUserName(e) {
       this.setState ({
@@ -34,12 +51,6 @@ class Profile extends React.Component {
       })
    }
 
-   handleSubmit(e) {
-      // hit the backend route for profile put
-
-   }
-
-
 
    render() {
       return (
@@ -48,13 +59,13 @@ class Profile extends React.Component {
             <h2>Update Your User Info</h2>
             <form onSubmit={this.handleSubmit}>
                Name:<br />
-               <input value={this.state.newName} onChange={this.updateUserName} type="text" placeholder={this.props.user.name}/>
+               <input value={this.state.newName} onChange={this.updateUserName} type="text"/>
                <br />
                Email:<br />
-               <input value={this.state.newEmail} onChange={this.updateUserEmail} type="text" placeholder={this.props.user.email}/>
+               <input value={this.state.newEmail} onChange={this.updateUserEmail} type="text" />
                <br />
                Address:<br />
-               <input value={this.state.newAddress} onChange={this.updateUserAddress} type="text" placeholder={this.props.user.address}/>
+               <input value={this.state.newAddress} onChange={this.updateUserAddress} type="text" />
                <br />
                <input type='submit' value="Save" />
             </form>

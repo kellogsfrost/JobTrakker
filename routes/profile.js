@@ -7,6 +7,24 @@ router.get('/', (req, res) => {
    res.json({ type: 'success', message: 'You accessed the protected api routes' });
 });
 
+//GET get/show user
+router.get("/:id", (req, res) => {
+   User.findById(req.params.id), function(err, user) {
+      if(err) res.json (err)
+      res.json(user)
+   }
+})
+
+//PUT update user info 
+router.put("/:id", (req, res) => {
+   User.findByIdAndUpdate(req.params.id, {
+      name: req.body.name,
+      email: req.body.email,
+      address: req.body.address
+   });
+   User.save((err, user) => {
+      res.json(user)
+});
 
 
 //POST - create a job--working
