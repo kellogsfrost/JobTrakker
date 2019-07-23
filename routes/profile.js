@@ -26,10 +26,7 @@ router.put("/:id", (req, res) => {
    })
 });
 
-   });
-   // User.save((err, user) => {
-   })
-});
+
 
 //POST - create a job--working
 // TODO: add express-jwt middleware to require the token
