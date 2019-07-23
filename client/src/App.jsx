@@ -4,6 +4,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
 import Job from './Job';
+import Map from './Map'
 // import NewJob from './NewJob';
 // import Edit from './Edit';
 import Home from './Home';
@@ -91,6 +92,7 @@ class App extends React.Component{
           <Link to="/">Home</Link>{' '}
           <Link to="/profile">Profile</Link>{' '}
           <Link to="/jobs">Jobs</Link>{' '}
+          <Link to="/map">Map</Link>{' '}
           </nav>
         <p>Hello, {user.name}</p>
         <p onClick={this.logout}>Logout</p>
@@ -123,6 +125,7 @@ class App extends React.Component{
                 render={(props) => <Job {...props} />} />
         <Route exact path='/signup'  component={Signup} />
         <Route exact path='/login'  component={Login} />
+        <Route excat path='/map' component={Map} />
       </Router>
     </>
     );
