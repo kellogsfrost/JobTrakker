@@ -23,6 +23,8 @@ router.put("/:id", (req, res) => {
       address: req.body.address
    }, (err, user) => {
       res.json(user)
+   })
+});
 
    });
    // User.save((err, user) => {
