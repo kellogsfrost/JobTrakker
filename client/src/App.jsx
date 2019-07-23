@@ -129,7 +129,9 @@ class App extends React.Component{
                 render={(props) => <Job jobs={this.state.user.jobs} {...props} />} />
         {/* <Route exact path='/signup'  component={Signup} /> */}
         {/* <Route exact path='/login'  component={Login} /> */}
-        <Route exact path='/map' component={Map} />
+        <Route exact path='/signup'  component={Signup} />
+        <Route exact path='/login'  component={Login} />
+        <Route exact path='/map' component={Map} /> 
       </Router>
     </>
     );
