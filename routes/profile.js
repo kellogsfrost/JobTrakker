@@ -6,6 +6,12 @@ const Job = require('../models/job');
 router.get('/', (req, res) => {
    res.json({ type: 'success', message: 'You accessed the protected api routes' });
 });
+//GET- get all jobss associated with that user
+router.get("/:id/jobs", (req, res) => {
+   User.findById(req.params.id).populate('jobs').exec((err, user) => {
+      res.status(200).json(user.jobs);
+   })
+})
 
 //GET get/show user
 router.get("/:id", (req, res) => {

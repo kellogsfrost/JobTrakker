@@ -4,9 +4,10 @@ import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
 import Job from './Job';
-import Map from './Map';
-//import NewJob from './NewJob';
-//import Edit from './Edit';
+import DisplayMap from './DisplayMap';
+// import NewJob from './NewJob';
+// import Edit from './Edit';
+
 import Home from './Home';
 import {
   BrowserRouter as Router,
@@ -92,7 +93,8 @@ class App extends React.Component{
           <Link to="/">Home</Link>{' '}
           <Link to="/profile">Profile</Link>{' '}
           <Link to="/jobs">Jobs</Link>{' '}
-          <Link to="/map">Map</Link>{' '}
+          {/* <Link to="/map">Map</Link>{' '} */}
+
           </nav>
         <p>Hello, {user.name}</p>
         <p onClick={this.logout}>Logout</p>
@@ -125,9 +127,11 @@ class App extends React.Component{
 
         <Route path='/jobs/:name' 
                 render={(props) => <Job jobs={this.state.user.jobs} {...props} />} />
+
         <Route exact path='/signup'  component={Signup} />
         <Route exact path='/login'  component={Login} />
         <Route exact path='/map' component={Map} />
+
       </Router>
     </>
     );
