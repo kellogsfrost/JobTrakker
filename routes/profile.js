@@ -36,7 +36,7 @@ router.put("/:id", (req, res) => {
 
 //POST - create a job--working
 // TODO: add express-jwt middleware to require the token
-router.post('/', (req, res) => {
+router.post('/:id/jobs', (req, res) => {
    // TODO: Use the user id in req.user._id to look up
    //  the user.
    console.log(req.user)
