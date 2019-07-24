@@ -125,7 +125,7 @@ class App extends React.Component{
                 render={() => <Profile jobs={this.state.jobs} user={this.state.user} liftToken={this.liftToken} token={this.state.token}/>} />
         <Route exact path='/jobs'  render={() => <Job jobs={this.state.user.jobs} /> }/>
 
-        <Route path='/jobs/:name' 
+        <Route path='/jobs/:id' 
                 render={(props) => <Job jobs={this.state.user.jobs} {...props} />} />
 
         <Route exact path='/signup'  component={Signup} />
