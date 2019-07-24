@@ -1,6 +1,5 @@
 
 import React from 'react';
-import interviews from './interviews'
 import axios from 'axios';
 
 class Interview extends React.Component {
@@ -69,7 +68,7 @@ class Interview extends React.Component {
                  <input value={this.state.newDate} onChange={this.updateInterviewDate} type="text"/>
                  <br />
                  Time:<br />
-                 <input value={this.state.newTime} onChange={this.updateInterviewEmail} type="text" />
+                 <input value={this.state.newTime} onChange={this.updateInterviewTime} type="text" />
                  <br />
                  Interviewer:<br />
                  <input value={this.state.newInterviewer} onChange={this.updateInterviewInterviewer} type="text" />
