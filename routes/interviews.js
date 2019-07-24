@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Interview = require('../models/interview');
 
-// Route for new interview
+// POST - new interview
 router.post('/', (req, res) => {
     Interview.create({
         date: req.body.date,
@@ -14,8 +14,8 @@ router.post('/', (req, res) => {
         res.json(interview)
     })
 });
-
-// Route to show all interviews
+ 
+// GET - all interviews
 router.get('/api/interviews', (req, res) => {
     Interview.find({}, function(err, interview){
         if (err) res.json(err)
@@ -23,6 +23,7 @@ router.get('/api/interviews', (req, res) => {
     })
 })
 
+// GET - get one interview
 router.get('/api/interviews/:id', (req, res) => {
     Interview.findById(req.params.id), function(err, interview){
         if (err) res.json(err)
@@ -30,6 +31,7 @@ router.get('/api/interviews/:id', (req, res) => {
     }
 })
 
+// PUT - update an interview
 router.put("/api/interviews/:id", (req, res) => {
     Interview.findByIdAndUpdate(req.params.id, {
         date: req.body.date,
@@ -42,6 +44,7 @@ router.put("/api/interviews/:id", (req, res) => {
     })
 })
 
+// DELETE - delete an interview
 router.delete("api/interviews/delete", (req, res) => {
     Interview.findByIdAndDelete(req.params.id, function(err){
         if (err) res.json(err);

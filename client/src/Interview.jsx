@@ -58,30 +58,30 @@ class Interview extends React.Component {
         })
     }
 
-
     render() {
         return (
-            <>
-                <h1>Current Interviews</h1>
-                <h2>Update Your User Info</h2>
-                <form onSubmit={this.handleSubmit}>
-                    Date:<br />
-                    <input value={this.state.newDate} onChange={this.updateInterviewDate} type="text" />
-                    <br />
-                    Time:<br />
-                    <input value={this.state.newTime} onChange={this.updateInterviewEmail} type="text" />
-                    <br />
-                    Interviewer:<br />
-                    <input value={this.state.newInterviewer} onChange={this.updateInterviewInterviewer} type="text" />
-                    <br />
-                    Notes:<br />
-                    <input value={this.state.newNotes} onChange={this.updateInterviewNotes} type="text" />
-                    <br />
-                    <input type='submit' value="Save" />
-                </form>
-            </>
+
+           <>
+              <h1>Current Interviews:</h1>
+              <h2>Update Your User Info</h2>
+              <form onSubmit={this.handleSubmit}>
+                 Date:<br />
+                 <input value={this.state.newDate} onChange={this.updateInterviewDate} type="text"/>
+                 <br />
+                 Time:<br />
+                 <input value={this.state.newTime} onChange={this.updateInterviewEmail} type="text" />
+                 <br />
+                 Interviewer:<br />
+                 <input value={this.state.newInterviewer} onChange={this.updateInterviewInterviewer} type="text" />
+                 <br />
+                 Notes:<br />
+                 <input value={this.state.newNotes} onChange={this.updateInterviewNotes} type="text" />
+                 <br />
+                 <input type='submit' value="Save" />
+              </form>
+           </>
         )
     }
 }
-
-export default Profile;
+  
+export default Interview;
