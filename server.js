@@ -33,13 +33,16 @@ db.on('error', (err) => {
     console.log(`Database error:\n${err}`);
 });
 
-// app.use('/auth/login', loginLimiter);
-// app.use('/auth/signup', signupLimiter);
+app.use('/auth/login', loginLimiter);
+app.use('/auth/signup', signupLimiter);
 
 app.use('/auth', require('./routes/auth'));
+app.use('/api/profile', require('./routes/profile'));
+app.use('/api/jobs', require('./routes/jobs'));
+app.use('/api/interviews', require('./routes/interviews'));
 app.use('/api', expressJWT({secret: process.env.JWT_SECRET}), require('./routes/api'));
 
 
 app.listen(process.env.PORT, () => {
-    console.log(`You're listening to port ${process.env.PORT}....`)
+    console.log(`You're listening to port ${process.env.PORT}....` || 3001)
 })
