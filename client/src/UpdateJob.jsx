@@ -1,9 +1,7 @@
-
 import React from 'react';
-import JobList from './JobList';
 import axios from 'axios';
 
-class Job extends React.Component {
+class UpdateJob extends React.Component {
    constructor(props) {
       super(props);
       this.state={
@@ -13,7 +11,7 @@ class Job extends React.Component {
          newEmail: '',
          newPhone: ''
       }
-      this.newJobPosition = this.updateJobPosition.bind(this);
+      this.updateJobPosition = this.updateJobPosition.bind(this);
       this.updateJobCompany = this.updateJobCompany.bind(this);
       this.updateJobLocation = this.updateJobLocation.bind(this);
       this.updateJobEmail = this.updateJobEmail.bind(this);
@@ -21,16 +19,16 @@ class Job extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
    }
    componentDidMount() {
-      axios.get('/api/jobs')
+      axios.get('/api/jobs/:id')
          .then(res => {
             this.setState({
-               jobs: res.data
+               job: res.data
             })
          })
    }
    handleSubmit(e) {
       e.preventDefault()
-      axios.post(`/api/job/${this.props.job._id}`, {
+      axios.put(`/api/job/${this.props.job._id}`, {
          position: this.state.position,
          company: this.state.company,
          location: this.state.location,
@@ -46,27 +44,27 @@ class Job extends React.Component {
          })
       
    }
-   newJobPosition(e) {
+   updateJobPosition(e) {
       this.setState ({
          newPosition: e.target.value
       })
    }
-   newJobCompany(e) {
+   updateJobCompany(e) {
       this.setState ({
          newCompany: e.target.value
       })
    }
-   newJobLocation(e) {
+   updateJobLocation(e) {
       this.setState ({
          newLocation: e.target.value
       })
    }
-   newJobPhone(e) {
+   updateJobPhone(e) {
       this.setState ({
          newPhone: e.target.value
       })
    }
-   newJobEmail(e) {
+   updateJobEmail(e) {
       this.setState ({
          newEmail: e.target.value
       })
@@ -75,9 +73,9 @@ class Job extends React.Component {
    render() {
       return (
          <>
-            <h1>Current Jobs:</h1>
-            <JobList jobs={this.props.jobs}/>
-            <h2>Create a New Job</h2>
+            {/* <h1>Current Jobs:</h1> */}
+            {/* <JobList jobs={this.props.jobs}/> */}
+            <h2>Update This Jobs Info</h2>
             <form onSubmit={this.handleSubmit}>
                Position:<br />
                <input value={this.state.newPosition} onChange={this.updateJobPosition} type="text"/>
@@ -104,4 +102,4 @@ class Job extends React.Component {
    }
 }
 
-export default Job;
+export default UpdateJob;
