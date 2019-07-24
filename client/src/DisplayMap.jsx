@@ -1,6 +1,7 @@
 import React from  'react';
 import ReactMapboxGl from 'react-mapbox-gl';
 
+
 function DisplayMap() {
   const Map = new ReactMapboxGl({
     accessToken: 'pk.eyJ1IjoibWNkdWRsZXk4NyIsImEiOiJjanhlejR5YWIwdWFwM25tcHNubDdpejIwIn0.n-RmlJrsycjQ76M82M_02Q',
@@ -26,6 +27,7 @@ function DisplayMap() {
     </div>
   );
 }
+
 
 export default DisplayMap;
 
