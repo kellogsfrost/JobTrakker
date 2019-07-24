@@ -41,9 +41,10 @@ class Map extends React.Component {
 		// let creating = this.props.creating
 				//SAVE THE BELOW TWO LINES
 		// let lng = this.props.lng
-		// let lat = this.props.lat
-		let lng = this.props.lng ? this.props.lng : -122.312328
-		let lat = this.props.lat ? this.props.lat : 47.634432
+    // let lat = this.props.lat
+    //render the user interview lat long
+		// let lng = this.props.lng ? this.props.lng : -122.3774
+		// let lat = this.props.lat ? this.props.lat : 47.8107
 
 		const Map = new ReactMapboxGl({
 			accessToken: 'pk.eyJ1IjoibWNkdWRsZXk4NyIsImEiOiJjanhlejR5YWIwdWFwM25tcHNubDdpejIwIn0.n-RmlJrsycjQ76M82M_02Q',
