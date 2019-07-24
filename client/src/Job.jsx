@@ -21,7 +21,7 @@ class Job extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
    }
    componentDidMount() {
-      axios.get('/jobs')
+      axios.get('/api/jobs')
          .then(res => {
             this.setState({
                jobs: res.data
@@ -38,12 +38,14 @@ class Job extends React.Component {
          email: this.state.email
       }).then((response) => {
          axios.get("/api/job/:id").then((response) =>{
+            // this.props.liftToken({toke: this.props.token, job: response.data})
             this.setState ({
                job: response.data
             })
          })
       })
    }
+   
    updateJobPosition(e) {
       this.setState ({
          newPosition: e.target.value
