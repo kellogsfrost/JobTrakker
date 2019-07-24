@@ -1,5 +1,3 @@
-
-
 import React from  'react';
 import ReactMapboxGl from 'react-mapbox-gl';
 
