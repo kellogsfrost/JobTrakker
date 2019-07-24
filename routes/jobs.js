@@ -22,6 +22,7 @@ router.get('/:jid', (req, res) => {
 })
 //POST - create a job--working
 router.post('/', (req, res) => {
+   console.log("Backend post route")
    Job.create({
       location: req.body.location,
       company: req.body.company,
