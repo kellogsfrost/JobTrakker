@@ -33,11 +33,13 @@ getUserLocation() {
 	});
 } 
 
+//create a component to pull interview location.
+
 render() {
 	let {lng, lat} = this.state.userLocation ? this.state.userLocation : {lng: 0, lat: 0}
 	return(
 		<Marker coordinates={[lng, lat]}
-			style={{backgroundColor: 'red', height: '25px', width: '25px', borderRadius: '50%'}}>
+			style={{backgroundColor: 'blue', height: '25px', width: '25px', borderRadius: '50%'}}>
 		</Marker>
 	)
 

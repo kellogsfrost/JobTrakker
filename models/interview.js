@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 
 const interviewSchema = new mongoose.Schema({
+   location: {
+      type: String,
+      required:[true, 'You must enter a Location']
+   },
    interviewer: {
       type: String,
    },

@@ -34,7 +34,7 @@ class Map extends React.Component {
 						}}>
               {/* Make this render interview location */}
 						<Marker coordinates={[lng, lat]}
-							style={{backgroundColor: 'rgba(0, 0, 0, 50% )', height: '25px', width: '25px', borderRadius: '50%'}}>
+							style={{backgroundColor: 'green', height: '25px', width: '25px', borderRadius: '50%'}}>
 						</Marker>
 						<MapMarker	/>
 					</Map>
