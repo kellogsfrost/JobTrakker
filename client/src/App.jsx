@@ -130,7 +130,7 @@ class App extends React.Component{
 
         <Route exact path='/signup'  component={Signup} />
         <Route exact path='/login'  component={Login} />
-        <Route exact path='/map' component={Map} />
+        <Route exact path='/map' component={DisplayMap} />
 
       </Router>
     </>

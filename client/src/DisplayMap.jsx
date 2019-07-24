@@ -1,7 +1,7 @@
 import React from  'react';
 import ReactMapboxGl from 'react-mapbox-gl';
 
-function Map() {
+function DisplayMap() {
   const Map = new ReactMapboxGl({
     accessToken: 'pk.eyJ1IjoibWNkdWRsZXk4NyIsImEiOiJjanhlejR5YWIwdWFwM25tcHNubDdpejIwIn0.n-RmlJrsycjQ76M82M_02Q',
     container: 'map',
@@ -14,7 +14,7 @@ function Map() {
 
   return (
     <div className="App">
-      <Map
+      <Map 
           center = {[-122.341408, 47.609797]}
           style="mapbox://styles/mapbox/streets-v9"
           containerStyle={{
@@ -27,5 +27,5 @@ function Map() {
   );
 }
 
-export default Map;
+export default DisplayMap;
 
