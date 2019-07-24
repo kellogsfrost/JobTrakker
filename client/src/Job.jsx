@@ -45,6 +45,21 @@ class Job extends React.Component {
          })
       })
    }
+
+   // handleSubmit(e) {
+   //    e.preventDefault()
+   //    axios.put(`/api/profile/${this.props.user._id}`, {
+   //       name: this.state.newName,
+   //       email: this.state.newEmail,
+   //       address: this.state.newAddress
+   //    }).then((response) => {
+   //       axios.get(`/api/profile/${this.props.user._id}`)
+   //       .then((response) =>{
+   //          console.log("Where are you eagle eye?!")
+   //          this.props.liftToken({token: this.props.token, user: response.data})
+   //       })
+   //    })
+   // }
    
    updateJobPosition(e) {
       this.setState ({

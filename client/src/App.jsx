@@ -22,7 +22,7 @@ class App extends React.Component{
       token: '',
       user: null,
       errorMessage: '',
-      apiData: null
+      apiData: null,
     }
     this.checkForLocalToken = this.checkForLocalToken.bind(this);
     this.liftToken = this.liftToken.bind(this);
