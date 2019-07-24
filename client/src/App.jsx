@@ -7,6 +7,7 @@ import Job from './Job';
 import DisplayMap from './DisplayMap';
 // import NewJob from './NewJob';
 // import Edit from './Edit';
+
 import Home from './Home';
 import {
   BrowserRouter as Router,
@@ -92,9 +93,8 @@ class App extends React.Component{
           <Link to="/">Home</Link>{' '}
           <Link to="/profile">Profile</Link>{' '}
           <Link to="/jobs">Jobs</Link>{' '}
-          
-
           {/* <Link to="/map">Map</Link>{' '} */}
+
           </nav>
         <p>Hello, {user.name}</p>
         <p onClick={this.logout}>Logout</p>
@@ -122,16 +122,15 @@ class App extends React.Component{
         {contents}
         <Route exact path='/profile' 
 
-                render={() => <Profile jobs={this.state.user.jobs} user={this.state.user} />} />
+                render={() => <Profile jobs={this.state.jobs} user={this.state.user} liftToken={this.liftToken} token={this.state.token}/>} />
         <Route exact path='/jobs'  render={() => <Job jobs={this.state.user.jobs} /> }/>
 
         <Route path='/jobs/:name' 
                 render={(props) => <Job jobs={this.state.user.jobs} {...props} />} />
-        {/* <Route exact path='/signup'  component={Signup} /> */}
-        {/* <Route exact path='/login'  component={Login} /> */}
+
         <Route exact path='/signup'  component={Signup} />
         <Route exact path='/login'  component={Login} />
-        {/* <Route exact path='/map' component={DisplayMap} />  */}
+        <Route exact path='/map' component={Map} />
 
       </Router>
     </>
