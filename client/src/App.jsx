@@ -5,6 +5,7 @@ import Signup from './Signup';
 import Profile from './Profile';
 import Job from './Job';
 import DisplayMap from './DisplayMap';
+import Interview from './Interview';
 // import NewJob from './NewJob';
 // import Edit from './Edit';
 
@@ -93,7 +94,8 @@ class App extends React.Component{
           <Link to="/">Home</Link>{' '}
           <Link to="/profile">Profile</Link>{' '}
           <Link to="/jobs">Jobs</Link>{' '}
-          {/* <Link to="/map">Map</Link>{' '} */}
+          <Link to="/interviews">Interview</Link>{' '}
+          <Link to="/map">Map</Link>{' '}
 
           </nav>
         <p>Hello, {user.name}</p>
@@ -127,7 +129,7 @@ class App extends React.Component{
 
         <Route path='/jobs/:id' 
                 render={(props) => <Job jobs={this.state.user.jobs} {...props} />} />
-
+        <Route exact path='/interviews'  render={() => <Interview interviews={this.state.interviews} /> }/>
         <Route exact path='/signup'  component={Signup} />
         <Route exact path='/login'  component={Login} />
         <Route exact path='/map' component={DisplayMap} />
@@ -137,7 +139,5 @@ class App extends React.Component{
     );
   }
 }
-
-
 
 export default App;
