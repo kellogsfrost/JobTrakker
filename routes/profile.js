@@ -6,7 +6,7 @@ const Job = require('../models/job');
 router.get('/', (req, res) => {
    res.json({ type: 'success', message: 'You accessed the protected api routes' });
 });
-//GET- get all jobss associated with that user
+// //GET- get all jobss associated with that user
 router.get("/:id/jobs", (req, res) => {
    User.findById(req.params.id).populate('jobs').exec((err, user) => {
       res.status(200).json(user.jobs);
@@ -39,8 +39,9 @@ router.put("/:id", (req, res) => {
 router.post('/:id/jobs', (req, res) => {
    // TODO: Use the user id in req.user._id to look up
    //  the user.
-   console.log(req.user)
-   User.findById(req.user._id, function (err, user) {
+   console.log(req.params.id)
+   User.findById(req.params.id, function (err, user) {
+      console.log("THIS IS THE USER:", user)
       Job.create({
          location: req.body.location,
          company: req.body.company,
@@ -48,8 +49,10 @@ router.post('/:id/jobs', (req, res) => {
          phone: req.body.phone,
          email: req.body.email
       }, function (err, job) {
+         console.log(job)
          user.jobs.push(job)
          user.save(function(err, user){
+            if (err) res.json(err)
             res.json(user)
          })
       })
