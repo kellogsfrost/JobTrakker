@@ -92,6 +92,8 @@ class App extends React.Component{
           <Link to="/">Home</Link>{' '}
           <Link to="/profile">Profile</Link>{' '}
           <Link to="/jobs">Jobs</Link>{' '}
+          
+
           {/* <Link to="/map">Map</Link>{' '} */}
           </nav>
         <p>Hello, {user.name}</p>
@@ -128,6 +130,7 @@ class App extends React.Component{
         <Route exact path='/signup'  component={Signup} />
         <Route exact path='/login'  component={Login} />
         {/* <Route excat path='/map' component={Map} />  */}
+
 
       </Router>
     </>
