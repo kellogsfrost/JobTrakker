@@ -13,11 +13,11 @@ class Job extends React.Component {
          newEmail: '',
          newPhone: ''
       }
-      this.newJobPosition = this.updateJobPosition.bind(this);
-      this.updateJobCompany = this.updateJobCompany.bind(this);
-      this.updateJobLocation = this.updateJobLocation.bind(this);
-      this.updateJobEmail = this.updateJobEmail.bind(this);
-      this.updateJobPhone = this.updateJobPhone.bind(this);
+      this.newJobPosition = this.newJobPosition.bind(this);
+      this.newJobCompany = this.newJobCompany.bind(this);
+      this.newJobLocation = this.newJobLocation.bind(this);
+      this.newJobEmail = this.newJobEmail.bind(this);
+      this.newJobPhone = this.newJobPhone.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
    }
    componentDidMount() {
