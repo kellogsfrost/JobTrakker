@@ -58,11 +58,10 @@ class Interview extends React.Component {
         })
     }
 
-
     render() {
         return (
            <>
-              <h1>Current Interviews</h1>
+              <h1>Current Interviews:</h1>
               <h2>Update Your User Info</h2>
               <form onSubmit={this.handleSubmit}>
                  Date:<br />
@@ -84,4 +83,4 @@ class Interview extends React.Component {
     }
 }
   
-export default Profile;
+export default Interview;
