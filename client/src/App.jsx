@@ -6,7 +6,7 @@ import Profile from './Profile';
 import Job from './Job';
 import DisplayMap from './DisplayMap';
 import Interview from './Interview';
-// import NewJob from './NewJob';
+import JobDetail from './JobDetail';
 // import Edit from './Edit';
 
 import Home from './Home';
@@ -128,7 +128,7 @@ class App extends React.Component{
         <Route exact path='/jobs'  render={() => <Job jobs={this.state.user.jobs} user={this.state.user} /> }/>
 
         <Route path='/jobs/:id' 
-                render={(props) => <Job jobs={this.state.user.jobs} {...props} />} />
+                render={(props) => <JobDetail jobs={this.state.user.jobs} {...props} />} />
         <Route exact path='/interviews'  render={() => <Interview interviews={this.state.interviews} /> }/>
         <Route exact path='/signup'  component={Signup} />
         <Route exact path='/login'  component={Login} />
