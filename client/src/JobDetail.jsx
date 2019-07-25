@@ -3,11 +3,12 @@ import axios from 'axios';
 
 class JobDetail extends React.Component {
    state = {
-      jobInfo: []
+      jobInfo: [],
+      interviewInfo: []
    }
    componentDidMount() {
       var jobId = this.props.match.params.id
-
+      var interviewId = this.
 
       console.log("hello" + this.props.match.params.id)
       axios.get(`/api/jobs/${jobId}`)
@@ -28,6 +29,7 @@ class JobDetail extends React.Component {
             {this.state.jobInfo.location}
             {this.state.jobInfo.phone}
             {this.state.jobInfo.email}
+            <h1>Here are your Interviews for this job:</h1>
          </>
       )
    }
