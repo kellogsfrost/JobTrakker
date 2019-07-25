@@ -6,7 +6,7 @@ const JobList = props =>  {
    console.log(props.jobs);
    if ( props.jobs.length) {
       jobs = props.jobs.map((job, index) => {
-         return <Link to={`/jobs/${job._id}`} className="jobrow" key={index}>{job.position} | {job.company} | {job.location} | {job.phone} | {job.email}</Link>
+         return <Link to={`/jobs/${job._id}`} className="jobrow" key={index}>{job.position} | {job.company} | {job.location} | {job.phone} | {job.email} | <button>Delete</button> </Link>
       })
    } else {
       jobs = <p>No Job Data!</p>
