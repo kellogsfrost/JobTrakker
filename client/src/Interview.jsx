@@ -36,15 +36,6 @@ class Interview extends React.Component {
         })
     }
 
-    interviewLocation() {
-        // axios get interview.address
-        axios.get("/api/interview/:id").then((response) => {
-          console.log(response)
-          this.setState({
-            location: response.data.location
-          })
-        })
-      }
 
 
     updateInterviewDate(e) {
