@@ -30,12 +30,12 @@ class Interview extends React.Component {
             }
         }
         axios.get(`/api/interviews/`, config)
-           .then(res => {
-              this.setState({
-                 interviews: res.data
-              })
-           })
-     }
+            .then(res => {
+                this.setState({
+                    interviews: res.data
+                })
+            })
+    }
     handleSubmit(e) {
         e.preventDefault()
         axios.put("/api/interview/:id", {
@@ -100,8 +100,8 @@ class Interview extends React.Component {
 
             <>
                 <h1>Current Interviews:</h1>
-                <InterviewList interviews={this.state.interviews}/>
-                
+                <InterviewList interviews={this.state.interviews} />
+
             </>
         )
     }
