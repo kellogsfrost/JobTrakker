@@ -1,11 +1,13 @@
 
 import React from 'react';
 import axios from 'axios';
+import InterviewList from './InterviewList'
 
 class Interview extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            interviews: [],
             newDate: '',
             newTime: '',
             newInterviewer: '',
@@ -18,7 +20,22 @@ class Interview extends React.Component {
         this.newInterviewLocation = this.newInterviewLocation.bind(this);
         this.updateInterviewNotes = this.updateInterviewNotes.bind(this);
     }
-
+    componentDidMount() {
+        var token = localStorage.getItem('mernToken');
+        // let interviewId = this.props.user._id;
+        // axios.defaults.headers.common['Authorization'] = `Bearer ${mernToken}` 
+        let config = {
+            headers: {
+                Authorization: `Bearer ${this.props.token}`
+            }
+        }
+        axios.get(`/api/interviews/`, config)
+           .then(res => {
+              this.setState({
+                 interviews: res.data
+              })
+           })
+     }
     handleSubmit(e) {
         e.preventDefault()
         axios.put("/api/interview/:id", {
@@ -39,12 +56,12 @@ class Interview extends React.Component {
     interviewLocation() {
         // axios get interview.address
         axios.get("/api/interview/:id").then((response) => {
-          console.log(response)
-          this.setState({
-            location: response.data.location
-          })
+            console.log(response)
+            this.setState({
+                location: response.data.location
+            })
         })
-      }
+    }
 
 
     updateInterviewDate(e) {
@@ -65,8 +82,8 @@ class Interview extends React.Component {
         })
     }
     newInterviewLocation(e) {
-        this.setState ({
-           newLocation: e.target.value
+        this.setState({
+            newLocation: e.target.value
         })
     }
 
@@ -79,30 +96,13 @@ class Interview extends React.Component {
     render() {
         return (
 
-           <>
-              <h1>Current Interviews:</h1>
-              <h2>Update Your User Info</h2>
-              <form onSubmit={this.handleSubmit}>
-                 Date:<br />
-                 <input value={this.state.newDate} onChange={this.updateInterviewDate} type="text"/>
-                 <br />
-                 Time:<br />
-                 <input value={this.state.newTime} onChange={this.updateInterviewTime} type="text" />
-                 <br />
-                 Location:<br />
-                <input value={this.state.newLocation} onChange={this.newInterviewLocation} type="text" />
-                 <br />
-                 Interviewer:<br />
-                 <input value={this.state.newInterviewer} onChange={this.updateInterviewInterviewer} type="text" />
-                 <br />
-                 Notes:<br />
-                 <input value={this.state.newNotes} onChange={this.updateInterviewNotes} type="text" />
-                 <br />
-                 <input type='submit' value="Save" />
-              </form>
-           </>
+            <>
+                <h1>Current Interviews:</h1>
+                <InterviewList interviews={this.state.interviews}/>
+                
+            </>
         )
     }
 }
-  
+
 export default Interview;

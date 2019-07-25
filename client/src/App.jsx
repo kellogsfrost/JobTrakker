@@ -9,6 +9,7 @@ import Interview from './Interview';
 import JobDetail from './JobDetail';
 
 
+
 import Home from './Home';
 import {
   BrowserRouter as Router,
@@ -135,7 +136,7 @@ class App extends React.Component{
 
         <Route path='/jobs/:id' 
                 render={(props) => <JobDetail jobs={this.state.user.jobs} {...props} />} />
-        <Route exact path='/interviews'  render={() => <Interview interviews={this.state.interviews} /> }/>
+        <Route exact path='/interviews'  render={() => <Interview jobs={this.state.jobs} interviews={this.state.interviews} token={this.state.token}/> }/>
         <Route exact path='/signup'  component={Signup} />
         <Route exact path='/login'  component={Login} />
         <Route exact path='/map' component={DisplayMap} />
