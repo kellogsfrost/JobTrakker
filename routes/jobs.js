@@ -15,8 +15,10 @@ router.get('/', (req, res) => {
 })
 //GET - get/show one job-working
 router.get('/:jid', (req, res) => {
-   Job.findById({_id: req.params.jid}, function (err, job) {
+   console.log("Getting job data for", req.params.jid)
+   Job.findById({_id: req.params.jid}).populate('interviews').exec(function (err, job) {
       if (err) res.json(err)
+      console.log(job)
       res.json(job)
    })
 })
@@ -68,6 +70,7 @@ router.get("/:jid/interviews/:iid", (req, res) => {
 router.post("/:jid/interviews", (req, res) => {
    Job.findById(req.params.jid, function (err, job) {
       let newInter = new Interview({
+         location: req.body.location,
          interviewer: req.body.interviewer,
          date: req.body.date,
          time: req.body.time,
@@ -83,7 +86,7 @@ router.post("/:jid/interviews", (req, res) => {
             res.json(job)
          })
       })
-      
+
       // Interview.create({
       //    interviewer: req.body.interviewer,
       //    date: req.body.date,
