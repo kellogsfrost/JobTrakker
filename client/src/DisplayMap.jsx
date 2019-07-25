@@ -17,7 +17,7 @@ class Map extends React.Component {
 		//get a location from props
 		// axios post request to /geo/code
 		axios.post('/geo/code',{
-			location: "Tacoma, WA"
+			location: "Seattle, WA"
 		}).then( result => {
 			this.setState({
 				lng: result.data[0],
@@ -27,9 +27,6 @@ class Map extends React.Component {
 	}
 
 	render () {
-    //render the user interview lat long
-		// let lng = this.props.lng ? this.props.lng : -122.3774
-		// let lat = this.props.lat ? this.props.lat : 47.8107
 		let lng = this.state.lng ? this.state.lng : -122.3774
 		let lat = this.state.lat ? this.state.lat : 47.8107
 
