@@ -52,7 +52,17 @@ class Interview extends React.Component {
             })
         })
     }
-
+    handleMap(e) {
+        e.preventDefault()
+        axios.get("/api/interview/:id", {
+            location: this.state.location
+        }).then((response) => {
+            console.log(response.data)
+            this.setState({
+                location: response.data
+            })
+        })
+    }
 
 
 
