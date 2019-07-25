@@ -20,6 +20,7 @@ class Job extends React.Component {
       this.newJobEmail = this.newJobEmail.bind(this);
       this.newJobPhone = this.newJobPhone.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleDelete = this.handleDelete.bind(this);
    }
    componentDidMount() {
       let userId = this.props.user._id;
@@ -52,6 +53,26 @@ class Job extends React.Component {
          })
       
    }
+
+   handleDelete(jobId) {
+      axios.delete(`/api/jobs/${jobId}`, {
+         location: this.state.location,
+         position: this.state.position,
+         company: this.state.company,
+         phone: this.state.phone,
+         email: this.state.email
+      }).then((response) => {
+         let userId = this.props.user._id;
+         axios.get(`/api/profile/${userId}/jobs`)
+         .then(res => {
+            this.setState({
+               jobs: res.data
+            })
+         })
+      })
+   }
+
+
    newJobPosition(e) {
       this.setState ({
          newPosition: e.target.value
@@ -79,10 +100,11 @@ class Job extends React.Component {
    }
 
    render() {
+
       return (
          <>
             <h1>Current Jobs:</h1>
-            <JobList jobs={this.state.jobs}/>
+            <JobList jobs={this.state.jobs} handleDelete={this.handleDelete}/>
             <h2>Create a New Job</h2>
             <form onSubmit={this.handleSubmit}>
             Location:<br />

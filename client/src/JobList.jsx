@@ -6,11 +6,18 @@ const JobList = props =>  {
    console.log(props.jobs);
    if ( props.jobs.length) {
       jobs = props.jobs.map((job, index) => {
-         return <Link to={`/jobs/${job._id}`} className="jobrow" key={index}>{job.position} | {job.company} | {job.location} | {job.phone} | {job.email} | <button>Delete</button> </Link>
+         return (
+            <>
+            <Link to={`/jobs/${job._id}`} className="jobrow" key={index}>{job.position} | {job.company} | {job.location} | {job.phone} | {job.email} </Link>
+            <button onClick={() => props.handleDelete(job._id)} >Delete</button>
+            </>
+         )
       })
    } else {
       jobs = <p>No Job Data!</p>
    }
+
+
    return (
          <div className='JobList'>
             <h3>All Your Current Jobs:</h3>
