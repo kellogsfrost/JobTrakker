@@ -17,7 +17,6 @@ const JobList = props =>  {
       jobs = <p>No Job Data!</p>
    }
 
-
    return (
          <div className='JobList'>
             <h3>All Your Current Jobs:</h3>
