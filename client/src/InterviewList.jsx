@@ -6,12 +6,14 @@ const InterviewList = props => {
    console.log(props.interviews.length);
    if (props.interviews.length) {
       interviews = props.interviews.map((interview, index) => {
-         return <Link to={`/interviews/${interview._id}`} className="interrow" key={index}>
+         return<> <Link to={`/interviews/${interview._id}`} className="interrow" key={index}>
          {interview.interviewer} |
          {interview.location} |
          {interview.date} |
          {interview.time} |
          {interview.notes} </Link>
+          <button onClick={() => props.handleMap} >Map</button>
+          </>
       })
    } else {
       interviews = <p>No Interview Data!</p>
