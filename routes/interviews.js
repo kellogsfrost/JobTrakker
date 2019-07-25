@@ -14,7 +14,7 @@ router.post('/', (req, res) => {
         res.json(interview)
     })
 });
- 
+
 // GET - all interviews
 router.get('/api/interviews', (req, res) => {
     Interview.find({}, function(err, interview){
