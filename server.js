@@ -39,7 +39,13 @@ db.on('error', (err) => {
 
 app.use('/auth/login', loginLimiter);
 app.use('/auth/signup', signupLimiter);
-
+app.post('/geo/code', function(req, res){
+    geocodingClient.forwardGeocode({
+        query: req.body.location
+    }).send().then( function(response) {
+        res.json(response.body.features[0].center)
+    }).catch( err => res.json(err))
+})
 app.use('/auth', require('./routes/auth'));
 app.use('/api/profile', require('./routes/profile'));
 app.use('/api/jobs', require('./routes/jobs'));

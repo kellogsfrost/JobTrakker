@@ -1,23 +1,43 @@
 import React from 'react';
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 import MapMarker from './Marker';
+import axios from 'axios';
 
 
 class Map extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			lng: '',
+			lat: ''
+		}
+	}
+
+	componentDidMount() {
+		//get a location from props
+		// axios post request to /geo/code
+		axios.post('/geo/code',{
+			location: "Tacoma, WA"
+		}).then( result => {
+			this.setState({
+				lng: result.data[0],
+				lat: result.data[1]
+			})
+		})
+		//put lat lng into state
+	}
 
 	render () {
-		// let creating = this.props.creating
-				//SAVE THE BELOW TWO LINES
-		// let lng = this.props.lng
-    // let lat = this.props.lat
     //render the user interview lat long
-		let lng = this.props.lng ? this.props.lng : -122.3321
-		let lat = this.props.lat ? this.props.lat : 47.6062
+		// let lng = this.props.lng ? this.props.lng : -122.3774
+		// let lat = this.props.lat ? this.props.lat : 47.8107
+		let lng = this.state.lng ? this.state.lng : -122.3774
+		let lat = this.state.lat ? this.state.lat : 47.8107
 
 		const Map = new ReactMapboxGl({
 			accessToken: 'pk.eyJ1IjoibWNkdWRsZXk4NyIsImEiOiJjanhlejR5YWIwdWFwM25tcHNubDdpejIwIn0.n-RmlJrsycjQ76M82M_02Q',
 			container: 'map',
-			minZoom: 12,
+			minZoom: 8,
 			maxZoom: 16
 		},		
 	);
@@ -26,7 +46,7 @@ class Map extends React.Component {
 			<>
 				<div className="mapboxBox">
 					<Map
-						center={[lng, lat]}
+						center={[-122.3321, 47.6062]}
 						style="mapbox://styles/mapbox/streets-v9"
 						containerStyle={{
 							height: '800px',
