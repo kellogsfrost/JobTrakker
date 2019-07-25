@@ -79,14 +79,16 @@ class App extends React.Component{
       user: null
     })
   }
+  
+  //on click pull interview location from database
+  // send user to map page rendering 
 
   componentDidMount() {
     this.checkForLocalToken()
   }
+  
 
-  handleLocationClick() {
-    
-  }
+
 
   render() {
     var user = this.state.user

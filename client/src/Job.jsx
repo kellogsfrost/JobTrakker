@@ -10,13 +10,11 @@ class Job extends React.Component {
          jobs: [],
          newPosition: '',
          newCompany: '',
-         newLocation: '',
          newEmail: '',
          newPhone: ''
       }
       this.newJobPosition = this.newJobPosition.bind(this);
       this.newJobCompany = this.newJobCompany.bind(this);
-      this.newJobLocation = this.newJobLocation.bind(this);
       this.newJobEmail = this.newJobEmail.bind(this);
       this.newJobPhone = this.newJobPhone.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,7 +34,6 @@ class Job extends React.Component {
       axios.post(`/api/profile/${userId}/jobs/`, {
          position: this.state.newPosition,
          company: this.state.newCompany,
-         location: this.state.newLocation,
          phone: this.state.newPhone,
          email: this.state.newEmail
       }).then((response) => {
@@ -62,11 +59,6 @@ class Job extends React.Component {
          newCompany: e.target.value
       })
    }
-   newJobLocation(e) {
-      this.setState ({
-         newLocation: e.target.value
-      })
-   }
    newJobPhone(e) {
       this.setState ({
          newPhone: e.target.value
@@ -90,9 +82,6 @@ class Job extends React.Component {
                <br />
                Company:<br />
                <input value={this.state.newCompany} onChange={this.newJobCompany} type="text" />
-               <br />
-               Location:<br />
-               <input value={this.state.newLocation} onChange={this.newJobLocation} type="text" />
                <br />
                Phone:<br />
                <input value={this.state.newPhone} onChange={this.newJobPhone} type="text" />
