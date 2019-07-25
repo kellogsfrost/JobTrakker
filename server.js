@@ -49,7 +49,7 @@ app.post('/geo/code', function(req, res){
 app.use('/auth', require('./routes/auth'));
 app.use('/api/profile', require('./routes/profile'));
 app.use('/api/jobs', require('./routes/jobs'));
-app.use('/api/interviews', require('./routes/interviews'));
+app.use('/api/interviews',expressJWT({secret: process.env.JWT_SECRET}), require('./routes/interviews'));
 app.use('/api', expressJWT({secret: process.env.JWT_SECRET}), require('./routes/api'));
 
 

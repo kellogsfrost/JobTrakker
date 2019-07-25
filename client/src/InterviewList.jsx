@@ -18,7 +18,7 @@ const InterviewList = props => {
    }
    return (
          <div className='InterviewList'>
-            <h3>All your Interviews for this Job:</h3>
+         
             {interviews}
             <hr/>
          </div>
