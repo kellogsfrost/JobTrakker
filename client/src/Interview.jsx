@@ -41,7 +41,7 @@ class Interview extends React.Component {
         axios.get("/api/interview/:id").then((response) => {
           console.log(response)
           this.setState({
-            location: res.data.location
+            location: response.data.location
           })
         })
       }
