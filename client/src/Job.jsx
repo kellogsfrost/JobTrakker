@@ -101,7 +101,7 @@ class Job extends React.Component {
                <input value={this.state.newEmail} onChange={this.newJobEmail} type="text" />
                <br />
                <input type='submit' value="Save" />
-            </form>
+            </form>        
             <div><button>My Calendar</button></div>
             <div><button>My Docs</button></div>
             <div><button>Update Your Info</button></div>
