@@ -53,6 +53,7 @@ class Interview extends React.Component {
         })
     }
 
+
     interviewLocation() {
         // axios get interview.address
         axios.get("/api/interview/:id").then((response) => {
@@ -62,6 +63,7 @@ class Interview extends React.Component {
             })
         })
     }
+
 
 
     updateInterviewDate(e) {
