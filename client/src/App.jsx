@@ -84,6 +84,10 @@ class App extends React.Component{
     this.checkForLocalToken()
   }
 
+  handleLocationClick() {
+    
+  }
+
   render() {
     var user = this.state.user
     var contents = ''
