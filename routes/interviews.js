@@ -17,7 +17,8 @@ router.post('/', (req, res) => {
 });
 
 // GET - all interviews
-router.get('/api/interviews', (req, res) => {
+router.get('/', (req, res) => {
+    
     Interview.find({}, function(err, interview){
         if (err) res.json(err)
         res.json(interview)
@@ -25,7 +26,7 @@ router.get('/api/interviews', (req, res) => {
 })
 
 // GET - get one interview
-router.get('/api/interviews/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     Interview.findById(req.params.id), function(err, interview){
         if (err) res.json(err)
         res.json(interview)
@@ -33,7 +34,7 @@ router.get('/api/interviews/:id', (req, res) => {
 })
 
 // PUT - update an interview
-router.put("/api/interviews/:id", (req, res) => {
+router.put("/:id", (req, res) => {
     Interview.findByIdAndUpdate(req.params.id, {
         location: req.body.location,
         date: req.body.date,
@@ -47,7 +48,7 @@ router.put("/api/interviews/:id", (req, res) => {
 })
 
 // DELETE - delete an interview
-router.delete("api/interviews/delete", (req, res) => {
+router.delete("/:id", (req, res) => {
     Interview.findByIdAndDelete(req.params.id, function(err){
         if (err) res.json(err);
         res.json({message: "DELETED*!"})
