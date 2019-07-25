@@ -5,6 +5,7 @@ const Interview = require('../models/interview');
 // POST - new interview
 router.post('/', (req, res) => {
     Interview.create({
+        location: req.body.location,
         date: req.body.date,
         time: req.body.time,
         interviewer: req.body.interviewer,
@@ -34,6 +35,7 @@ router.get('/api/interviews/:id', (req, res) => {
 // PUT - update an interview
 router.put("/api/interviews/:id", (req, res) => {
     Interview.findByIdAndUpdate(req.params.id, {
+        location: req.body.location,
         date: req.body.date,
         time: req.body.time,
         interviewer: req.body.interviewer,
