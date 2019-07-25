@@ -24,7 +24,6 @@ class Map extends React.Component {
 				lat: result.data[1]
 			})
 		})
-		//put lat lng into state
 	}
 
 	render () {
