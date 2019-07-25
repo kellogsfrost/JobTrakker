@@ -8,11 +8,13 @@ class Job extends React.Component {
       super(props);
       this.state={
          jobs: [],
+         newLocation: '',
          newPosition: '',
          newCompany: '',
          newEmail: '',
          newPhone: ''
       }
+      this.newJobLocation = this.newJobLocation.bind(this);
       this.newJobPosition = this.newJobPosition.bind(this);
       this.newJobCompany = this.newJobCompany.bind(this);
       this.newJobEmail = this.newJobEmail.bind(this);
@@ -32,6 +34,7 @@ class Job extends React.Component {
       e.preventDefault()
       let userId = this.props.user._id;
       axios.post(`/api/profile/${userId}/jobs/`, {
+         location: this.state.newLocation,
          position: this.state.newPosition,
          company: this.state.newCompany,
          phone: this.state.newPhone,
@@ -64,6 +67,11 @@ class Job extends React.Component {
          newPhone: e.target.value
       })
    }
+   newJobLocation(e) {
+      this.setState ({
+         newLocation: e.target.value
+      })
+  }
    newJobEmail(e) {
       this.setState ({
          newEmail: e.target.value
@@ -77,6 +85,9 @@ class Job extends React.Component {
             <JobList jobs={this.state.jobs}/>
             <h2>Create a New Job</h2>
             <form onSubmit={this.handleSubmit}>
+            Location:<br />
+                <input value={this.state.newLocation} onChange={this.newJobLocation} type="text" />
+                 <br />
                Position:<br />
                <input value={this.state.newPosition} onChange={this.newJobPosition} type="text"/>
                <br />

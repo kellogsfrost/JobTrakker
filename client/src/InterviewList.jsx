@@ -8,6 +8,7 @@ const InterviewList = props => {
       interviews = props.interviews.map((interview, index) => {
          return <Link to={`/interviews/${interview._id}`} className="interrow" key={index}>
          {interview.interviewer} |
+         {interview.location} |
          {interview.date} |
          {interview.time} |
          {interview.notes} </Link>
