@@ -39,7 +39,6 @@ class Map extends React.Component {
 						<MapMarker	/>
 					</Map>
 				</div>
-				<button onClick={this.handleButtonClick}>Don't Look At Me</button>
 			</>
 		)
 	}
