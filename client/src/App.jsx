@@ -8,13 +8,12 @@ import DisplayMap from './DisplayMap';
 import Interview from './Interview';
 import JobDetail from './JobDetail';
 
-
-
 import Home from './Home';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Redirect
 } from 'react-router-dom';
 
 class App extends React.Component{
@@ -118,17 +117,16 @@ class App extends React.Component{
           <Link to="/">Home</Link>{' '}
         </nav>
         <p>Please signup or login</p>
-        <Login liftToken={this.liftToken} />
-        <Signup liftToken={this.liftToken} />
+        {/* <Login liftToken={this.liftToken} /> */}
+        {/* <Signup liftToken={this.liftToken} /> */}
         </>
       );
     }
     return(
       <>
       <Router>
-        
-        <Route exact path='/' component={Home} />
         {contents}
+        <Route exact path='/' component={Home} />
         <Route exact path='/profile' 
 
                 render={() => <Profile jobs={this.state.jobs} user={this.state.user} liftToken={this.liftToken} token={this.state.token}/>} />
@@ -137,8 +135,10 @@ class App extends React.Component{
         <Route path='/jobs/:id' 
                 render={(props) => <JobDetail jobs={this.state.user.jobs} {...props} />} />
         <Route exact path='/interviews'  render={() => <Interview jobs={this.state.jobs} interviews={this.state.interviews} token={this.state.token}/> }/>
-        <Route exact path='/signup'  component={Signup} />
-        <Route exact path='/login'  component={Login} />
+    <Route exact path='/signup'  render={() => <Signup liftToken={this.liftToken} /> }/>
+    {/* <Route exact path='/login'   render={() => <Login liftToken={this.liftToken} />} /> */}
+    <Route exact path="/login" render={() => ( (user) ? (<Redirect to="/"/>) : (<Login liftToken={this.liftToken} />)
+)}/>
         <Route exact path='/map' component={DisplayMap} />
 
       </Router>
