@@ -17,7 +17,7 @@ class Map extends React.Component {
 		//get a location from props
 		// axios post request to /geo/code
 		axios.post('/geo/code',{
-			location: "Seattle, WA"
+			location: "24970 SE 362nd ln Enumclaw, WA"
 		}).then( result => {
 			this.setState({
 				lng: result.data[0],
