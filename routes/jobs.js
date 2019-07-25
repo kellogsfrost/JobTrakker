@@ -67,18 +67,35 @@ router.get("/:jid/interviews/:iid", (req, res) => {
 //POST- add interview to job???
 router.post("/:jid/interviews", (req, res) => {
    Job.findById(req.params.jid, function (err, job) {
-      Interview.create({
+      let newInter = new Interview({
          interviewer: req.body.interviewer,
          date: req.body.date,
          time: req.body.time,
          notes: req.body.notes
-      }, function (err, interview) {
-         job.interviews.push(interview)
+      })
+      console.log('new interview', newInter);
+      
+      newInter.save(function(err) {
+         console.log('interview after save', newInter)
+         job.interviews.push(newInter)
          job.save(function (err) {
             //errr handling
             res.json(job)
          })
       })
+      
+      // Interview.create({
+      //    interviewer: req.body.interviewer,
+      //    date: req.body.date,
+      //    time: req.body.time,
+      //    notes: req.body.notes
+      // }, function (err, interview) {
+      //    job.interviews.push(interview)
+      //    job.save(function (err) {
+      //       //errr handling
+      //       res.json(job)
+      //    })
+      // })
    })
 })
 //DELETE -delete one job
