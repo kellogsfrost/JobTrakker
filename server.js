@@ -2,10 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const expressJWT = require('express-jwt');
-const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
-// const MapboxDirections = require('@mapbox/mapbox-gl-directions');
 const app = express();
+const mapbox = require('@mapbox/mapbox-sdk/services/geocoding')
+const geocodingClient = mapbox({
+    accessToken: 'pk.eyJ1IjoibWNkdWRsZXk4NyIsImEiOiJjanhlejR5YWIwdWFwM25tcHNubDdpejIwIn0.n-RmlJrsycjQ76M82M_02Q'
+})
+const helmet = require('helmet');
+
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());

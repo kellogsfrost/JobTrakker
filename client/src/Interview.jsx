@@ -9,11 +9,13 @@ class Interview extends React.Component {
             newDate: '',
             newTime: '',
             newInterviewer: '',
-            newNotes: ''
+            newNotes: '',
+            newLocation: '',
         }
         this.updateInterviewDate = this.updateInterviewDate.bind(this);
         this.updateInterviewTime = this.updateInterviewTime.bind(this);
         this.updateInterviewInterviewer = this.updateInterviewInterviewer.bind(this);
+        this.newInterviewLocation = this.newInterviewLocation.bind(this);
         this.updateInterviewNotes = this.updateInterviewNotes.bind(this);
     }
 
@@ -23,6 +25,7 @@ class Interview extends React.Component {
             date: this.state.newDate,
             time: this.state.newTime,
             interviewer: this.state.newInterviewer,
+            location: this.state.newLocation,
             notes: this.state.newNotes,
         }).then((response) => {
             axios.get("/api/interview/:id").then((response) => {
@@ -33,6 +36,17 @@ class Interview extends React.Component {
         })
     }
 
+    interviewLocation() {
+        // axios get interview.address
+        axios.get("/api/interview/:id").then((response) => {
+          console.log(response)
+          this.setState({
+            location: res.data.location
+          })
+        })
+      }
+
+      
     updateInterviewDate(e) {
         this.setState({
             newDate: e.target.value
@@ -48,6 +62,11 @@ class Interview extends React.Component {
     updateInterviewInterviewer(e) {
         this.setState({
             newInterviewer: e.target.value
+        })
+    }
+    newInterviewLocation(e) {
+        this.setState ({
+           newLocation: e.target.value
         })
     }
 
@@ -69,6 +88,9 @@ class Interview extends React.Component {
                  <br />
                  Time:<br />
                  <input value={this.state.newTime} onChange={this.updateInterviewTime} type="text" />
+                 <br />
+                 Location:<br />
+                <input value={this.state.newLocation} onChange={this.newJobLocation} type="text" />
                  <br />
                  Interviewer:<br />
                  <input value={this.state.newInterviewer} onChange={this.updateInterviewInterviewer} type="text" />
