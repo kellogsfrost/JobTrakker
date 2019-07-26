@@ -8,8 +8,14 @@ class Interview extends React.Component {
         super(props);
         this.state = {
             interviews: [],
+            newDate: '',
+            newTime: '',
+            newInterviewer: '',
+            newNotes: '',
+            newLocation: '',
             token: ''
         }
+       
       
 
     }
@@ -29,7 +35,24 @@ class Interview extends React.Component {
                 })
             })
     }
-    
+    handleSubmit(e) {
+        e.preventDefault()
+        let userId = this.props.user._id;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}` 
+        axios.post(`/api/profile/${userId}/interviews/`, {
+            date: this.state.newDate,
+            time: this.state.newTime,
+            interviewer: this.state.newInterviewer,
+            location: this.state.newLocation,
+            notes: this.state.newNotes
+        }).then((response) => {
+            axios.get(`/api/profile/${userId}/interviews`).then((response) => {
+                this.setState({
+                    interviews: response.data
+                })
+            })
+        })
+    }
     handleMap(e) {
         e.preventDefault()
         axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}` 
@@ -44,6 +67,7 @@ class Interview extends React.Component {
     }
 
 
+
     render() {
         return (
 
@@ -52,7 +76,6 @@ class Interview extends React.Component {
                 <InterviewList interviews={this.state.interviews} />
                 <hr />
                 
-
             </>
         )
     }

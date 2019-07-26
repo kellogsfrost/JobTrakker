@@ -19,6 +19,7 @@ router.get('/:jid', (req, res) => {
    Job.findById({_id: req.params.jid}).populate('interviews').exec(function (err, job) {
       if (err) res.json(err)
       console.log(job)
+      console.log(err)
       res.json(job)
    })
 })
