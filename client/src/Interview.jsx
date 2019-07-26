@@ -19,6 +19,7 @@ class Interview extends React.Component {
         this.updateInterviewInterviewer = this.updateInterviewInterviewer.bind(this);
         this.newInterviewLocation = this.newInterviewLocation.bind(this);
         this.updateInterviewNotes = this.updateInterviewNotes.bind(this);
+        // this.handleMap = this.handleMap.bind(this);
     }
     componentDidMount() {
         var token = localStorage.getItem('mernToken');
@@ -52,17 +53,17 @@ class Interview extends React.Component {
             })
         })
     }
-    handleMap(e) {
-        e.preventDefault()
-        axios.get("/api/interview/:id", {
-            location: this.state.location
-        }).then((response) => {
-            console.log(response.data)
-            this.setState({
-                location: response.data
-            })
-        })
-    }
+    // handleMap(e) {
+    //     e.preventDefault()
+    //     axios.get("/api/interview/:id", {
+    //         location: this.state.location
+    //     }).then((response) => {
+    //         console.log(response.data)
+    //         this.setState({
+    //             location: response.data
+    //         })
+    //     })
+    // }
 
 
 
