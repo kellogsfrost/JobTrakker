@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import InterviewList from './InterviewList';
+import UpdateJob from './UpdateJob';
 
 class JobDetail extends React.Component {
    constructor(props) {
@@ -94,6 +95,7 @@ class JobDetail extends React.Component {
             {this.state.jobInfo.location}
             {this.state.jobInfo.phone}
             {this.state.jobInfo.email}
+            <UpdateJob />
             <h1>Here are your Interviews for this job:</h1>
             < InterviewList interviews={this.state.jobInfo.interviews} />
             <hr />

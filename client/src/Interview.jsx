@@ -11,6 +11,7 @@ class Interview extends React.Component {
             token: ''
         }
       
+
     }
     componentDidMount() {
         var token = localStorage.getItem('mernToken');
@@ -42,6 +43,41 @@ class Interview extends React.Component {
         })
     }
 
+<<<<<<< HEAD
+=======
+
+
+
+    newInterviewDate(e) {
+        this.setState({
+            newDate: e.target.value
+        })
+    }
+
+    newInterviewTime(e) {
+        this.setState({
+            newTime: e.target.value
+        })
+    }
+
+    newInterviewInterviewer(e) {
+        this.setState({
+            newInterviewer: e.target.value
+        })
+    }
+    newInterviewLocation(e) {
+        this.setState({
+            newLocation: e.target.value
+        })
+    }
+
+    newInterviewNotes(e) {
+        this.setState({
+            newNotes: e.target.value
+        })
+    }
+
+>>>>>>> 00a8dfbae64f8f2f5729d4ba71347a9b03d992be
     render() {
         return (
 
