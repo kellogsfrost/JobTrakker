@@ -85,6 +85,9 @@ router.post("/:jid/interviews", (req, res) => {
             //errr handling
             res.json(job)
          })
+         .catch(err => {
+            console.log(err)
+         })
       })
 
       // Interview.create({

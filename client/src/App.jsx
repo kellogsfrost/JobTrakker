@@ -181,16 +181,14 @@ class App extends React.Component{
         {contents}
         <Route exact path='/' component={Home} />
         <Route exact path='/profile' 
-
                 render={() => <Profile jobs={this.state.jobs} user={this.state.user} interviews={this.state.interviews} liftToken={this.liftToken} token={this.state.token}/>} />
         <Route exact path='/jobs'  render={() => <Job jobs={this.state.user.jobs} user={this.state.user} /> }/>
 
         <Route path='/jobs/:id' 
-                render={(props) => <JobDetail jobs={this.state.user.jobs} {...props} />} />
+                render={(props) => <JobDetail jobs={this.state.user.jobs} token={this.state.token} {...props} />} />
         <Route exact path='/interviews'  render={() => <Interview jobs={this.state.jobs} interviews={this.state.interviews} user={this.state.user} token={this.state.token}/> }/>
-    <Route exact path='/signup'  render={() => <Signup liftToken={this.liftToken} /> }/>
-    {/* <Route exact path='/login'   render={() => <Login liftToken={this.liftToken} />} /> */}
-    <Route exact path="/login" render={() => ( (user) ? (<Redirect to="/"/>) : (<Login liftToken={this.liftToken} />)
+        <Route exact path='/signup'  render={() => <Signup liftToken={this.liftToken} /> }/>
+        <Route exact path="/login" render={() => ( (user) ? (<Redirect to="/"/>) : (<Login liftToken={this.liftToken} />)
 )}/>
         <Route exact path='/map/:location' render={(props)=> <DisplayMap {...props} />} />
 
