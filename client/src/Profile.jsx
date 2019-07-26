@@ -69,8 +69,6 @@ class Profile extends React.Component {
                <br />
                <input type='submit' value="Save" />
             </form>
-               <button>My Calendar</button>
-               <button>My Docs</button>
          </>
       )
    }
