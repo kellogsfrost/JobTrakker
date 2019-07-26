@@ -15,13 +15,18 @@ router.get('/', (req, res) => {
 })
 //GET - get/show one job-working
 router.get('/:jid', (req, res) => {
-   Job.findById({_id: req.params.jid}, function (err, job) {
+   console.log("Getting job data for", req.params.jid)
+   // console.log(req.user._id);
+   Job.findById(req.params.jid).populate('interviews').exec(function (err, job) {
       if (err) res.json(err)
+      console.log(job)
+      console.log(err)
       res.json(job)
    })
 })
 //POST - create a job--working
 router.post('/', (req, res) => {
+   console.log("Backend post route")
    Job.create({
       location: req.body.location,
       company: req.body.company,
@@ -65,19 +70,38 @@ router.get("/:jid/interviews/:iid", (req, res) => {
 })
 //POST- add interview to job???
 router.post("/:jid/interviews", (req, res) => {
+   console.log("Hit this route-add interview to job");
    Job.findById(req.params.jid, function (err, job) {
-      Interview.create({
+      let newInter = new Interview({
+         location: req.body.location,
          interviewer: req.body.interviewer,
          date: req.body.date,
          time: req.body.time,
          notes: req.body.notes
-      }, function (err, interview) {
-         job.interviews.push(interview)
+      })
+      console.log('new interview', newInter);
+      
+      newInter.save(function(err) {
+         console.log('interview after save', newInter)
+         job.interviews.push(newInter)
          job.save(function (err) {
             //errr handling
             res.json(job)
          })
       })
+
+      // Interview.create({
+      //    interviewer: req.body.interviewer,
+      //    date: req.body.date,
+      //    time: req.body.time,
+      //    notes: req.body.notes
+      // }, function (err, interview) {
+      //    job.interviews.push(interview)
+      //    job.save(function (err) {
+      //       //errr handling
+      //       res.json(job)
+      //    })
+      // })
    })
 })
 //DELETE -delete one job
