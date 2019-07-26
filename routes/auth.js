@@ -37,7 +37,7 @@ router.post('/signup', (req, res) => {
 //Route for login
 router.post('/login', (req, res) => {
     // find user in db by email
-    User.findOne({ email: req.body.email }, (err, user) => {
+    User.findOne({ email: req.body.email }).populate('jobs').exec((err, user) => {
         if (!user) {
             // if there is no user, return error
             res.json({ type: 'error', message: 'Account not found' })

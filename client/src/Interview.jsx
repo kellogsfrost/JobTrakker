@@ -39,14 +39,14 @@ class Interview extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault()
-        axios.put("/api/interview/:id", {
+        axios.post("/api/interview/", {
             date: this.state.newDate,
             time: this.state.newTime,
             interviewer: this.state.newInterviewer,
             location: this.state.newLocation,
             notes: this.state.newNotes,
         }).then((response) => {
-            axios.get("/api/interview/:id").then((response) => {
+            axios.get("/api/interview/").then((response) => {
                 this.setState({
                     interview: response.data
                 })
@@ -102,6 +102,21 @@ class Interview extends React.Component {
             <>
                 <h1>Current Interviews:</h1>
                 <InterviewList interviews={this.state.interviews} />
+                <form onSubmit={this.handleSubmit}>
+                    Date:<br />
+                        <input value={this.state.newDate} onChange={this.updateInterviewDate} type="text"/>
+                        <br />
+                    Time:<br />
+                        <input value={this.state.newTime} onChange={this.updateInterviewTime} type="text" />
+                        <br />
+                    Interviewer:<br />
+                        <input value={this.state.newInterviewer} onChange={this.updateInterviewInterviewer} type="text" />
+                        <br />
+                    Notes:<br />
+                        <input value={this.state.newNotes} onChange={this.updateInterviewNotes} type="text" />
+                        <br />
+                    <input type='submit' value="Save" />
+                </form>
 
             </>
         )
