@@ -69,4 +69,15 @@ class Interview extends React.Component {
 
 
 
+    render() {
+        return (
+
+            <>
+                <h1>Current Interviews:</h1>
+                <InterviewList interviews={this.state.interviews} />
+                <hr />
+                
+
+
+
 export default Interview;
