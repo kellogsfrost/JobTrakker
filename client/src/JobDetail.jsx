@@ -97,8 +97,8 @@ class JobDetail extends React.Component {
             {this.state.jobInfo.email}
             <UpdateJob />
             <h1>Here are your Interviews for this job:</h1>
-            < InterviewList interviews={this.state.jobInfo.interviews} />
             <hr />
+            < InterviewList interviews={this.state.jobInfo.interviews} />
             <h2>Create a New Interview!</h2>
             <form onSubmit={this.handleSubmit}>
                Location:<br />
