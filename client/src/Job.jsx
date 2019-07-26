@@ -107,7 +107,7 @@ class Job extends React.Component {
             <JobList jobs={this.state.jobs} handleDelete={this.handleDelete}/>
             <h2>Create a New Job</h2>
             <form onSubmit={this.handleSubmit}>
-            Location:<br />
+               Location:<br />
                 <input value={this.state.newLocation} onChange={this.newJobLocation} type="text" />
                  <br />
                Position:<br />

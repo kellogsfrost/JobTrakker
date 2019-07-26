@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 // //GET- get all jobss associated with that user
 router.get("/:id/jobs", (req, res) => {
    User.findById(req.params.id).populate('jobs').exec((err, user) => {
+      console.log(user);
       res.status(200).json(user.jobs);
    })
 })
