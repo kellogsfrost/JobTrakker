@@ -13,12 +13,15 @@ class Interview extends React.Component {
             newInterviewer: '',
             newNotes: '',
             newLocation: '',
+            token: ''
         }
-        this.updateInterviewDate = this.updateInterviewDate.bind(this);
-        this.updateInterviewTime = this.updateInterviewTime.bind(this);
-        this.updateInterviewInterviewer = this.updateInterviewInterviewer.bind(this);
+        this.newInterviewDate = this.newInterviewDate.bind(this);
+        this.newInterviewTime = this.newInterviewTime.bind(this);
+        this.newInterviewInterviewer = this.newInterviewInterviewer.bind(this);
         this.newInterviewLocation = this.newInterviewLocation.bind(this);
-        this.updateInterviewNotes = this.updateInterviewNotes.bind(this);
+        this.newInterviewNotes = this.newInterviewNotes.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      
     }
     componentDidMount() {
         var token = localStorage.getItem('mernToken');
@@ -38,23 +41,26 @@ class Interview extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault()
-        axios.put("/api/interview/:id", {
+        let userId = this.props.user._id;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}` 
+        axios.post(`/api/profile/${userId}/interviews/`, {
             date: this.state.newDate,
             time: this.state.newTime,
             interviewer: this.state.newInterviewer,
             location: this.state.newLocation,
-            notes: this.state.newNotes,
+            notes: this.state.newNotes
         }).then((response) => {
-            axios.get("/api/interview/:id").then((response) => {
+            axios.get(`/api/profile/${userId}/interviews`).then((response) => {
                 this.setState({
-                    interview: response.data
+                    interviews: response.data
                 })
             })
         })
     }
     handleMap(e) {
         e.preventDefault()
-        axios.get("/api/interview/:id", {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}` 
+        axios.get("/api/interviews/:id", {
             location: this.state.location
         }).then((response) => {
             console.log(response.data)
@@ -66,19 +72,19 @@ class Interview extends React.Component {
 
 
 
-    updateInterviewDate(e) {
+    newInterviewDate(e) {
         this.setState({
             newDate: e.target.value
         })
     }
 
-    updateInterviewTime(e) {
+    newInterviewTime(e) {
         this.setState({
             newTime: e.target.value
         })
     }
 
-    updateInterviewInterviewer(e) {
+    newInterviewInterviewer(e) {
         this.setState({
             newInterviewer: e.target.value
         })
@@ -89,7 +95,7 @@ class Interview extends React.Component {
         })
     }
 
-    updateInterviewNotes(e) {
+    newInterviewNotes(e) {
         this.setState({
             newNotes: e.target.value
         })
@@ -101,6 +107,26 @@ class Interview extends React.Component {
             <>
                 <h1>Current Interviews:</h1>
                 <InterviewList interviews={this.state.interviews} />
+                <hr />
+                <h2>Create a New Interview!</h2>
+                <form onSubmit={this.handleSubmit}>
+                    Location:<br />
+                    <input value={this.state.newLocation} onChange={this.newInterviewLocation} type="text" />
+                    <br />
+                    Interviewer:<br />
+                    <input value={this.state.newInterviewer} onChange={this.newInterviewInterviewer} type="text" />
+                    <br />
+                    Date:<br />
+                    <input value={this.state.newDate} onChange={this.newInterviewDate} type="text" />
+                    <br />
+                    Time:<br />
+                    <input value={this.state.newTime} onChange={this.newInterviewTime} type="text" />
+                    <br />
+                    Notes:<br />
+                    <input value={this.state.newNotes} onChange={this.newInterviewNotes} type="text" />
+                    <br />
+                    <input type='submit' value="Save" />
+                </form>
 
             </>
         )
