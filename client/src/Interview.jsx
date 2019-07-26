@@ -16,9 +16,8 @@ class Interview extends React.Component {
             token: ''
         }
        
-      
-
     }
+    
     componentDidMount() {
         var token = localStorage.getItem('mernToken');
         // let interviewId = this.props.user._id;
@@ -65,7 +64,7 @@ class Interview extends React.Component {
             })
         })
     }
-}
+
 
 
 
@@ -76,8 +75,9 @@ class Interview extends React.Component {
                 <h1>Current Interviews:</h1>
                 <InterviewList interviews={this.state.interviews} />
                 <hr />
-                
-
-
+            </>
+        )
+    }
+}
 
 export default Interview;
