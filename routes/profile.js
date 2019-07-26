@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const Job = require('../models/job');
+const Interview = require('../models/interview');
 
 router.get('/', (req, res) => {
    res.json({ type: 'success', message: 'You accessed the protected api routes' });
@@ -12,7 +13,12 @@ router.get("/:id/jobs", (req, res) => {
       res.status(200).json(user.jobs);
    })
 })
-
+// //GET- get all interviews associated with that user
+router.get("/:id/interviews", (req, res) => {
+   User.findById(req.params.id).populate('interviews').exec((err, user) => {
+      res.status(200).json(user.interviews);
+   })
+})
 //GET get/show user
 router.get("/:id", (req, res) => {
    User.findById(req.params.id, function(err, user) {
@@ -54,6 +60,27 @@ router.post('/:id/jobs', (req, res) => {
          user.save(function(err, user){
             if (err) res.json(err)
             res.json(user)
+         })
+      })
+   })
+})
+//POST - create a interview--working
+router.post('/:id/interviews', (req, res) => {
+   console.log(req.params.id)
+   User.findById(req.params.id, function (err, user) {
+      console.log("THIS IS THE USER:", user)
+      Interview.create({
+         location: req.body.location,
+         interviewer: req.body.interviewer,
+         time: req.body.time,
+         date: req.body.date,
+         notes: req.body.notes
+      }, function (err, interview) {
+         console.log(interview)
+         job.interviews.push(interview)
+         job.save(function(err, job){
+            if (err) res.json(err)
+            res.json(job)
          })
       })
    })
