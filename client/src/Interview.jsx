@@ -8,8 +8,14 @@ class Interview extends React.Component {
         super(props);
         this.state = {
             interviews: [],
+            newDate: '',
+            newTime: '',
+            newInterviewer: '',
+            newNotes: '',
+            newLocation: '',
             token: ''
         }
+       
       
 
     }
@@ -29,7 +35,24 @@ class Interview extends React.Component {
                 })
             })
     }
-    
+    handleSubmit(e) {
+        e.preventDefault()
+        let userId = this.props.user._id;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}` 
+        axios.post(`/api/profile/${userId}/interviews/`, {
+            date: this.state.newDate,
+            time: this.state.newTime,
+            interviewer: this.state.newInterviewer,
+            location: this.state.newLocation,
+            notes: this.state.newNotes
+        }).then((response) => {
+            axios.get(`/api/profile/${userId}/interviews`).then((response) => {
+                this.setState({
+                    interviews: response.data
+                })
+            })
+        })
+    }
     handleMap(e) {
         e.preventDefault()
         axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}` 
@@ -42,54 +65,8 @@ class Interview extends React.Component {
             })
         })
     }
-
-<<<<<<< HEAD
-=======
-
-
-
-    newInterviewDate(e) {
-        this.setState({
-            newDate: e.target.value
-        })
-    }
-
-    newInterviewTime(e) {
-        this.setState({
-            newTime: e.target.value
-        })
-    }
-
-    newInterviewInterviewer(e) {
-        this.setState({
-            newInterviewer: e.target.value
-        })
-    }
-    newInterviewLocation(e) {
-        this.setState({
-            newLocation: e.target.value
-        })
-    }
-
-    newInterviewNotes(e) {
-        this.setState({
-            newNotes: e.target.value
-        })
-    }
-
->>>>>>> 00a8dfbae64f8f2f5729d4ba71347a9b03d992be
-    render() {
-        return (
-
-            <>
-                <h1>Current Interviews:</h1>
-                <InterviewList interviews={this.state.interviews} />
-                <hr />
-                
-
-            </>
-        )
-    }
 }
+
+
 
 export default Interview;
