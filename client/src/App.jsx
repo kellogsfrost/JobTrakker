@@ -128,13 +128,6 @@ class App extends React.Component{
                         padding: '5px',
                         fontSize: '25px'
                     }}to="/interviews">Interview</Link>{' '}
-          <Link  style={{
-                        textDecoration: 'none',
-                        color: 'white',
-                        margin: '5px',
-                        padding: '5px',
-                        fontSize: '25px'
-                    }}to="/map">Map</Link>{' '}
 
           </nav>
 
