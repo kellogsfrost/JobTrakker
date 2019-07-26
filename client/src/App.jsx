@@ -7,6 +7,7 @@ import Job from './Job';
 import DisplayMap from './DisplayMap';
 import Interview from './Interview';
 import JobDetail from './JobDetail';
+import './App.css';
 
 import Home from './Home';
 import {
@@ -97,13 +98,12 @@ class App extends React.Component{
       contents = (
         <>
         <nav>
-          <Link to="/">Home</Link>{' '}
-          <Link to="/profile">Profile</Link>{' '}
-          <Link to="/jobs">Jobs</Link>{' '}
-          <Link to="/interviews">Interview</Link>{' '}
-          <Link to="/map">Map</Link>{' '}
-
-          </nav>
+            <Link to="/">Home</Link>{' '}
+            <Link to="/profile">Profile</Link>{' '}
+            <Link to="/jobs">Jobs</Link>{' '}
+            <Link to="/interviews">Interview</Link>{' '}
+            <Link to="/map">Map</Link>{' '}
+        </nav>
         <p>Hello, {user.name}</p>
         <p onClick={this.logout}>Logout</p>
         </>
