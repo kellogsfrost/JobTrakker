@@ -12,7 +12,7 @@ const InterviewList = props => {
          {interview.date} |
          {interview.time} |
          {interview.notes} </Link>
-          <button onClick={() => props.handleMap} >Map</button>
+          <Link to={`/map/${interview.location}`}> Show Location</Link>}
           </>
       })
    } else {

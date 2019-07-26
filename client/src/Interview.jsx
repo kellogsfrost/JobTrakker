@@ -22,6 +22,7 @@ class Interview extends React.Component {
         this.newInterviewNotes = this.newInterviewNotes.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       
+
     }
     componentDidMount() {
         var token = localStorage.getItem('mernToken');
@@ -69,6 +70,7 @@ class Interview extends React.Component {
             })
         })
     }
+
 
 
 

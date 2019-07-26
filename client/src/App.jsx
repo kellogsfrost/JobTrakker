@@ -96,6 +96,7 @@ class App extends React.Component{
     if (user) {
       contents = (
         <>
+
         <div  style={{ backgroundImage: `url(require("../public/images/working.jpg"))` }}>
         <nav className="nav">
        
@@ -136,6 +137,7 @@ class App extends React.Component{
                     }}to="/map">Map</Link>{' '}
 
           </nav>
+
         <p>Hello, {user.name}</p>
         <p onClick={this.logout}>Logout</p>
         <i className="far fa-user"></i>
@@ -190,7 +192,7 @@ class App extends React.Component{
     {/* <Route exact path='/login'   render={() => <Login liftToken={this.liftToken} />} /> */}
     <Route exact path="/login" render={() => ( (user) ? (<Redirect to="/"/>) : (<Login liftToken={this.liftToken} />)
 )}/>
-        <Route exact path='/map' component={DisplayMap} />
+        <Route exact path='/map/:location' render={(props)=> <DisplayMap {...props} />} />
 
       </Router>
     </>
