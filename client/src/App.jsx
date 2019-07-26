@@ -8,7 +8,6 @@ import DisplayMap from './DisplayMap';
 import Interview from './Interview';
 import JobDetail from './JobDetail';
 import './App.css';
-
 import Home from './Home';
 import {
   BrowserRouter as Router,
@@ -97,28 +96,82 @@ class App extends React.Component{
     if (user) {
       contents = (
         <>
-        <nav>
-            <Link to="/">Home</Link>{' '}
-            <Link to="/profile">Profile</Link>{' '}
-            <Link to="/jobs">Jobs</Link>{' '}
-            <Link to="/interviews">Interview</Link>{' '}
-            <Link to="/map">Map</Link>{' '}
-        </nav>
+
+        <div  style={{ backgroundImage: `url(require("../public/images/working.jpg"))` }}>
+        <nav className="nav">
+       
+          <Link  style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                        margin: '5px',
+                        padding: '5px',
+                        fontSize: '25px'
+                    }}to="/">Home</Link>{' '}
+          <Link  style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                        margin: '5px',
+                        padding: '5px',
+                        fontSize: '25px'
+                    }}to="/profile">Profile</Link>{' '}
+          <Link  style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                        margin: '5px',
+                        padding: '5px',
+                        fontSize: '25px'
+                    }}to="/jobs">Jobs</Link>{' '}
+          <Link  style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                        margin: '5px',
+                        padding: '5px',
+                        fontSize: '25px'
+                    }}to="/interviews">Interview</Link>{' '}
+          <Link  style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                        margin: '5px',
+                        padding: '5px',
+                        fontSize: '25px'
+                    }}to="/map">Map</Link>{' '}
+
+          </nav>
+
         <p>Hello, {user.name}</p>
         <p onClick={this.logout}>Logout</p>
+        <i className="far fa-user"></i>
+        </div>
         </>
       );
     } else {
       contents = (
         <>
-        <nav>
-          <Link to="/signup">Sign Up</Link>{' '}
-          <Link to="/login">LogIn</Link>{' '}
-          <Link to="/">Home</Link>{' '}
+        <div style={{ backgroundImage: `url(require("../public/images/working.jpg"))` }}>
+        <nav className="nav">
+          <Link  style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                        margin: '5px',
+                        padding: '5px'
+                    }} to="/signup">Sign Up</Link>{' '}
+          <Link  style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                        margin: '5px',
+                        padding: '5px'
+                    }} to="/login">LogIn</Link>{' '}
+          <Link  style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                        margin: '5px',
+                        padding: '5px'
+                    }} to="/">Home</Link>{' '}
         </nav>
         <p>Please signup or login</p>
         {/* <Login liftToken={this.liftToken} /> */}
         {/* <Signup liftToken={this.liftToken} /> */}
+        </div>
         </>
       );
     }
@@ -128,16 +181,14 @@ class App extends React.Component{
         {contents}
         <Route exact path='/' component={Home} />
         <Route exact path='/profile' 
-
-                render={() => <Profile jobs={this.state.jobs} user={this.state.user} liftToken={this.liftToken} token={this.state.token}/>} />
+                render={() => <Profile jobs={this.state.jobs} user={this.state.user} interviews={this.state.interviews} liftToken={this.liftToken} token={this.state.token}/>} />
         <Route exact path='/jobs'  render={() => <Job jobs={this.state.user.jobs} user={this.state.user} /> }/>
 
         <Route path='/jobs/:id' 
-                render={(props) => <JobDetail jobs={this.state.user.jobs} {...props} />} />
-        <Route exact path='/interviews'  render={() => <Interview jobs={this.state.jobs} interviews={this.state.interviews} token={this.state.token}/> }/>
-    <Route exact path='/signup'  render={() => <Signup liftToken={this.liftToken} /> }/>
-    {/* <Route exact path='/login'   render={() => <Login liftToken={this.liftToken} />} /> */}
-    <Route exact path="/login" render={() => ( (user) ? (<Redirect to="/"/>) : (<Login liftToken={this.liftToken} />)
+                render={(props) => <JobDetail jobs={this.state.user.jobs} token={this.state.token} {...props} />} />
+        <Route exact path='/interviews'  render={() => <Interview jobs={this.state.jobs} interviews={this.state.interviews} user={this.state.user} token={this.state.token}/> }/>
+        <Route exact path='/signup'  render={() => <Signup liftToken={this.liftToken} /> }/>
+        <Route exact path="/login" render={() => ( (user) ? (<Redirect to="/"/>) : (<Login liftToken={this.liftToken} />)
 )}/>
         <Route exact path='/map/:location' render={(props)=> <DisplayMap {...props} />} />
 
