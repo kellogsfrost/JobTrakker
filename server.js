@@ -28,7 +28,8 @@ const signupLimiter = new RateLimit({
     message: "Maximum accounts created. Please try again later."
 })
 
-mongoose.connect('mongodb://localhost/jwtAuth', {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI);
+
 const db = mongoose.connection;
 db.once('open', () => {
     console.log(`Connected to Mongo on ${db.host}:${db.port}`)
@@ -37,6 +38,7 @@ db.on('error', (err) => {
     console.log(`Database error:\n${err}`);
 });
 
+app.use(express.static(__dirname + '/client/build'));
 app.use('/auth/login', loginLimiter);
 app.use('/auth/signup', signupLimiter);
 app.post('/geo/code', function(req, res){
@@ -53,6 +55,10 @@ app.use('/api/interviews',expressJWT({secret: process.env.JWT_SECRET}), require(
 app.use('/api', expressJWT({secret: process.env.JWT_SECRET}), require('./routes/api'));
 
 
+
 app.listen(process.env.PORT, () => {
     console.log(`You're listening to port ${process.env.PORT}....` || 3001)
 })
+app.get('*', function(req, res) {
+	res.sendFile(__dirname + '/client/build/index.html');
+});
