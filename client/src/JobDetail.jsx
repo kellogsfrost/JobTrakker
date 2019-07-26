@@ -26,16 +26,23 @@ class JobDetail extends React.Component {
    componentDidMount() {
       var jobId = this.props.match.params.id
 
-
-      console.log("hello" + this.props.match.params.id)
-      axios.get(`/api/jobs/${jobId}`)
+      console.log("hello " + this.props.match.params.id)
+      console.log("this is jobId:", jobId);
+      console.log("this is the token:", this.props.token);
+      // axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}`
+      var config = {
+         headers: {
+            Authorization: `Bearer ${this.props.token}`
+         }
+      }
+      axios.get(`/api/jobs/${jobId}`, config)
          .then(res => {
             var jobInfo = res.data
             this.setState({
                jobInfo
             })
             console.log("job details" + res.data.position)
-            console.log(this.state.jobInfo)
+            // console.log(this.state.jobInfo)
          })
    }
    handleSubmit(e) {
@@ -43,16 +50,23 @@ class JobDetail extends React.Component {
       let jobId = this.props.match.params.id;
       console.log(this.props.token)
       // axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}`
-      axios.post(`/api/jobs/${jobId}/`, {
+      var config = {
+         headers: {
+            Authorization: `Bearer ${this.props.token}`
+         }
+      }
+      axios.post(`/api/jobs/${jobId}/interviews`, {
          date: this.state.newDate,
          time: this.state.newTime,
          interviewer: this.state.newInterviewer,
          location: this.state.newLocation,
          notes: this.state.newNotes
-      }).then((response) => {
-         axios.get(`/api/jobs/${jobId}/`).then((response) => {
+      }, config).then((response) => {
+         axios.get(`/api/jobs/${jobId}/`, config).then((response) => {
+            var jobInfoCopy = Object.assign({}, this.state.jobInfo)
+            jobInfoCopy.interviews = response.data.interviews
             this.setState({
-               interviews: response.data
+               jobInfo: jobInfoCopy
             })
          })
       })
