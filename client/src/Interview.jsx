@@ -15,7 +15,7 @@ class Interview extends React.Component {
             newLocation: '',
             token: ''
         }
-       
+
     }
     
     componentDidMount() {
@@ -34,47 +34,46 @@ class Interview extends React.Component {
                 })
             })
     }
-    handleSubmit(e) {
-        e.preventDefault()
-        let userId = this.props.user._id;
-        axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}` 
-        axios.post(`/api/profile/${userId}/interviews/`, {
-            date: this.state.newDate,
-            time: this.state.newTime,
-            interviewer: this.state.newInterviewer,
-            location: this.state.newLocation,
-            notes: this.state.newNotes
-        }).then((response) => {
-            axios.get(`/api/profile/${userId}/interviews`).then((response) => {
-                this.setState({
-                    interviews: response.data
-                })
-            })
-        })
-    }
-    handleMap(e) {
-        e.preventDefault()
-        axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}` 
-        axios.get("/api/interviews/:id", {
-            location: this.state.location
-        }).then((response) => {
-            console.log(response.data)
-            this.setState({
-                location: response.data
-            })
-        })
-    }
 
-
-
+    // handleSubmit(e) {
+    //     e.preventDefault()
+    //     let userId = this.props.user._id;
+    //     axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}`
+    //     axios.post(`/api/profile/${userId}/interviews/`, {
+    //         date: this.state.newDate,
+    //         time: this.state.newTime,
+    //         interviewer: this.state.newInterviewer,
+    //         location: this.state.newLocation,
+    //         notes: this.state.newNotes
+    //     }).then((response) => {
+    //         axios.get(`/api/profile/${userId}/interviews`).then((response) => {
+    //             this.setState({
+    //                 interviews: response.data
+    //             })
+    //         })
+    //     })
+    // }
+    // handleMap(e) {
+    //     e.preventDefault()
+    //     axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}`
+    //     axios.get("/api/interviews/:id", {
+    //         location: this.state.location
+    //     }).then((response) => {
+    //         console.log(response.data)
+    //         this.setState({
+    //             location: response.data
+    //         })
+    //     })
+    
+    // }
 
     render() {
         return (
 
             <>
-                <h1>Current Interviews:</h1>
-                <InterviewList interviews={this.state.interviews} />
-                <hr />
+            <h1>Current Interviews:</h1>
+            <InterviewList interviews={this.state.interviews} />
+            <hr />
             </>
         )
     }

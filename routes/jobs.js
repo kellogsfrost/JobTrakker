@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 //GET - get/show one job-working
 router.get('/:jid', (req, res) => {
    console.log("Getting job data for", req.params.jid)
-   Job.findById({_id: req.params.jid}).populate('interviews').exec(function (err, job) {
+   Job.findById({id: req.params.jid}).populate('interviews').exec(function (err, job) {
       if (err) res.json(err)
       console.log(job)
       console.log(err)
