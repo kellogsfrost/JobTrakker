@@ -15,7 +15,9 @@ class Interview extends React.Component {
             newLocation: '',
             token: ''
         }
+
     }
+    
     componentDidMount() {
         var token = localStorage.getItem('mernToken');
         // let interviewId = this.props.user._id;
@@ -32,6 +34,7 @@ class Interview extends React.Component {
                 })
             })
     }
+
     // handleSubmit(e) {
     //     e.preventDefault()
     //     let userId = this.props.user._id;
