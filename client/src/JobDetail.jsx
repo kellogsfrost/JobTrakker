@@ -42,7 +42,7 @@ class JobDetail extends React.Component {
       e.preventDefault()
       let jobId = this.props.match.params.id;
       console.log(this.props.token)
-      axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}`
+      // axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}`
       axios.post(`/api/jobs/${jobId}/`, {
          date: this.state.newDate,
          time: this.state.newTime,
