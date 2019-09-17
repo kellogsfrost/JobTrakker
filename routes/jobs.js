@@ -5,7 +5,7 @@ const Interview = require('../models/interview');
 
 
 
-//GET - all jobs-working
+//GET - all songs-working
 router.get('/', (req, res) => {
    // console.log("hello?");
    Job.find({}, function(err, jobs) {
@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
       res.json(jobs)
    })
 })
-//GET - get/show one job-working
+//GET - get/show one songs-working
 router.get('/:jid', (req, res) => {
    console.log("Getting job data for", req.params.jid)
    // console.log(req.user._id);

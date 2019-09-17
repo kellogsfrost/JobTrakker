@@ -5,7 +5,7 @@ const Home = props => (
    <>
       <div className="cover">
       <body className="background">
-      <h1>Welcome to the JobTrackker</h1>
+      <h1>Welcome to the JobTracker</h1>
       
       <p></p>
       </body>
