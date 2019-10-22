@@ -140,17 +140,31 @@ class App extends React.Component{
     } else {
       contents = (
         <>
-         <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
-      </ul>
-    </div>
-  </nav>
-        
+        <div style={{ backgroundImage: `url(require("../public/images/working.jpg"))` }}>
+        <nav className="nav">
+          <Link  style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                        margin: '5px',
+                        padding: '5px'
+                    }} to="/signup">Sign Up</Link>{' '}
+          <Link  style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                        margin: '5px',
+                        padding: '5px'
+                    }} to="/login">LogIn</Link>{' '}
+          <Link  style={{
+                        textDecoration: 'none',
+                        color: 'white',
+                        margin: '5px',
+                        padding: '5px'
+                    }} to="/">Home</Link>{' '}
+        </nav>
+        <p>Please signup or login</p>
+        {/* <Login liftToken={this.liftToken} /> */}
+        {/* <Signup liftToken={this.liftToken} /> */}
+        </div>
         </>
       );
     }
